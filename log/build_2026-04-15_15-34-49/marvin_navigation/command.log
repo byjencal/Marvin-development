@@ -1,0 +1,6 @@
+Invoking command in '/home/carlos/MARVIN/build/marvin_navigation': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake /home/carlos/MARVIN/marvin_sim/src/marvin_navigation -DCMAKE_INSTALL_PREFIX=/home/carlos/MARVIN/install/marvin_navigation
+Invoked command in '/home/carlos/MARVIN/build/marvin_navigation' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake /home/carlos/MARVIN/marvin_sim/src/marvin_navigation -DCMAKE_INSTALL_PREFIX=/home/carlos/MARVIN/install/marvin_navigation
+Invoking command in '/home/carlos/MARVIN/build/marvin_navigation': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/carlos/MARVIN/build/marvin_navigation -- -j8 -l8
+Invoked command in '/home/carlos/MARVIN/build/marvin_navigation' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/carlos/MARVIN/build/marvin_navigation -- -j8 -l8
+Invoking command in '/home/carlos/MARVIN/build/marvin_navigation': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /home/carlos/MARVIN/build/marvin_navigation
+Invoked command in '/home/carlos/MARVIN/build/marvin_navigation' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /home/carlos/MARVIN/build/marvin_navigation

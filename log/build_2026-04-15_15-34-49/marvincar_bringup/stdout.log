@@ -1,0 +1,58 @@
+running egg_info
+creating ../../../build/marvincar_bringup/marvincar_bringup.egg-info
+writing ../../../build/marvincar_bringup/marvincar_bringup.egg-info/PKG-INFO
+writing dependency_links to ../../../build/marvincar_bringup/marvincar_bringup.egg-info/dependency_links.txt
+writing entry points to ../../../build/marvincar_bringup/marvincar_bringup.egg-info/entry_points.txt
+writing requirements to ../../../build/marvincar_bringup/marvincar_bringup.egg-info/requires.txt
+writing top-level names to ../../../build/marvincar_bringup/marvincar_bringup.egg-info/top_level.txt
+writing manifest file '../../../build/marvincar_bringup/marvincar_bringup.egg-info/SOURCES.txt'
+reading manifest file '../../../build/marvincar_bringup/marvincar_bringup.egg-info/SOURCES.txt'
+writing manifest file '../../../build/marvincar_bringup/marvincar_bringup.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/carlos/MARVIN/build/marvincar_bringup/build
+creating /home/carlos/MARVIN/build/marvincar_bringup/build/lib
+creating /home/carlos/MARVIN/build/marvincar_bringup/build/lib/marvincar_bringup
+copying marvincar_bringup/patrol.py -> /home/carlos/MARVIN/build/marvincar_bringup/build/lib/marvincar_bringup
+copying marvincar_bringup/transform_utils.py -> /home/carlos/MARVIN/build/marvincar_bringup/build/lib/marvincar_bringup
+copying marvincar_bringup/__init__.py -> /home/carlos/MARVIN/build/marvincar_bringup/build/lib/marvincar_bringup
+copying marvincar_bringup/calibrate_linear.py -> /home/carlos/MARVIN/build/marvincar_bringup/build/lib/marvincar_bringup
+copying marvincar_bringup/Ackman_driver.py -> /home/carlos/MARVIN/build/marvincar_bringup/build/lib/marvincar_bringup
+copying marvincar_bringup/calibrate_angular.py -> /home/carlos/MARVIN/build/marvincar_bringup/build/lib/marvincar_bringup
+running install
+running install_lib
+creating /home/carlos/MARVIN/install/marvincar_bringup/lib/python3.8/site-packages/marvincar_bringup
+copying /home/carlos/MARVIN/build/marvincar_bringup/build/lib/marvincar_bringup/patrol.py -> /home/carlos/MARVIN/install/marvincar_bringup/lib/python3.8/site-packages/marvincar_bringup
+copying /home/carlos/MARVIN/build/marvincar_bringup/build/lib/marvincar_bringup/transform_utils.py -> /home/carlos/MARVIN/install/marvincar_bringup/lib/python3.8/site-packages/marvincar_bringup
+copying /home/carlos/MARVIN/build/marvincar_bringup/build/lib/marvincar_bringup/__init__.py -> /home/carlos/MARVIN/install/marvincar_bringup/lib/python3.8/site-packages/marvincar_bringup
+copying /home/carlos/MARVIN/build/marvincar_bringup/build/lib/marvincar_bringup/calibrate_linear.py -> /home/carlos/MARVIN/install/marvincar_bringup/lib/python3.8/site-packages/marvincar_bringup
+copying /home/carlos/MARVIN/build/marvincar_bringup/build/lib/marvincar_bringup/Ackman_driver.py -> /home/carlos/MARVIN/install/marvincar_bringup/lib/python3.8/site-packages/marvincar_bringup
+copying /home/carlos/MARVIN/build/marvincar_bringup/build/lib/marvincar_bringup/calibrate_angular.py -> /home/carlos/MARVIN/install/marvincar_bringup/lib/python3.8/site-packages/marvincar_bringup
+byte-compiling /home/carlos/MARVIN/install/marvincar_bringup/lib/python3.8/site-packages/marvincar_bringup/patrol.py to patrol.cpython-38.pyc
+byte-compiling /home/carlos/MARVIN/install/marvincar_bringup/lib/python3.8/site-packages/marvincar_bringup/transform_utils.py to transform_utils.cpython-38.pyc
+byte-compiling /home/carlos/MARVIN/install/marvincar_bringup/lib/python3.8/site-packages/marvincar_bringup/__init__.py to __init__.cpython-38.pyc
+byte-compiling /home/carlos/MARVIN/install/marvincar_bringup/lib/python3.8/site-packages/marvincar_bringup/calibrate_linear.py to calibrate_linear.cpython-38.pyc
+byte-compiling /home/carlos/MARVIN/install/marvincar_bringup/lib/python3.8/site-packages/marvincar_bringup/Ackman_driver.py to Ackman_driver.cpython-38.pyc
+byte-compiling /home/carlos/MARVIN/install/marvincar_bringup/lib/python3.8/site-packages/marvincar_bringup/calibrate_angular.py to calibrate_angular.cpython-38.pyc
+running install_data
+creating /home/carlos/MARVIN/install/marvincar_bringup/share/ament_index
+creating /home/carlos/MARVIN/install/marvincar_bringup/share/ament_index/resource_index
+creating /home/carlos/MARVIN/install/marvincar_bringup/share/ament_index/resource_index/packages
+copying resource/marvincar_bringup -> /home/carlos/MARVIN/install/marvincar_bringup/share/ament_index/resource_index/packages
+copying package.xml -> /home/carlos/MARVIN/install/marvincar_bringup/share/marvincar_bringup
+creating /home/carlos/MARVIN/install/marvincar_bringup/share/marvincar_bringup/launch
+copying launch/marvincar_bringup_launch.py -> /home/carlos/MARVIN/install/marvincar_bringup/share/marvincar_bringup/launch
+copying launch/full_system_launch.py -> /home/carlos/MARVIN/install/marvincar_bringup/share/marvincar_bringup/launch
+creating /home/carlos/MARVIN/install/marvincar_bringup/share/marvincar_description
+creating /home/carlos/MARVIN/install/marvincar_bringup/share/marvincar_description/rviz
+copying rviz/marvin_car.rviz -> /home/carlos/MARVIN/install/marvincar_bringup/share/marvincar_description/rviz
+creating /home/carlos/MARVIN/install/marvincar_bringup/share/marvincar_bringup/param
+copying param/imu_filter_param.yaml -> /home/carlos/MARVIN/install/marvincar_bringup/share/marvincar_bringup/param
+running install_egg_info
+Copying ../../../build/marvincar_bringup/marvincar_bringup.egg-info to /home/carlos/MARVIN/install/marvincar_bringup/lib/python3.8/site-packages/marvincar_bringup-0.0.0-py3.8.egg-info
+running install_scripts
+Installing Ackman_driver script to /home/carlos/MARVIN/install/marvincar_bringup/lib/marvincar_bringup
+Installing calibrate_angular script to /home/carlos/MARVIN/install/marvincar_bringup/lib/marvincar_bringup
+Installing calibrate_linear script to /home/carlos/MARVIN/install/marvincar_bringup/lib/marvincar_bringup
+Installing patrol script to /home/carlos/MARVIN/install/marvincar_bringup/lib/marvincar_bringup
+writing list of installed files to '/home/carlos/MARVIN/build/marvincar_bringup/install.log'

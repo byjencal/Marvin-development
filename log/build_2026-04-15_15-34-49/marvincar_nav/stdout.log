@@ -1,0 +1,54 @@
+running egg_info
+creating ../../../build/marvincar_nav/marvincar_nav.egg-info
+writing ../../../build/marvincar_nav/marvincar_nav.egg-info/PKG-INFO
+writing dependency_links to ../../../build/marvincar_nav/marvincar_nav.egg-info/dependency_links.txt
+writing entry points to ../../../build/marvincar_nav/marvincar_nav.egg-info/entry_points.txt
+writing requirements to ../../../build/marvincar_nav/marvincar_nav.egg-info/requires.txt
+writing top-level names to ../../../build/marvincar_nav/marvincar_nav.egg-info/top_level.txt
+writing manifest file '../../../build/marvincar_nav/marvincar_nav.egg-info/SOURCES.txt'
+reading manifest file '../../../build/marvincar_nav/marvincar_nav.egg-info/SOURCES.txt'
+writing manifest file '../../../build/marvincar_nav/marvincar_nav.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/carlos/MARVIN/build/marvincar_nav/build
+creating /home/carlos/MARVIN/build/marvincar_nav/build/lib
+creating /home/carlos/MARVIN/build/marvincar_nav/build/lib/marvincar_nav
+copying marvincar_nav/scan_filter.py -> /home/carlos/MARVIN/build/marvincar_nav/build/lib/marvincar_nav
+copying marvincar_nav/__init__.py -> /home/carlos/MARVIN/build/marvincar_nav/build/lib/marvincar_nav
+running install
+running install_lib
+creating /home/carlos/MARVIN/install/marvincar_nav/lib/python3.8/site-packages/marvincar_nav
+copying /home/carlos/MARVIN/build/marvincar_nav/build/lib/marvincar_nav/scan_filter.py -> /home/carlos/MARVIN/install/marvincar_nav/lib/python3.8/site-packages/marvincar_nav
+copying /home/carlos/MARVIN/build/marvincar_nav/build/lib/marvincar_nav/__init__.py -> /home/carlos/MARVIN/install/marvincar_nav/lib/python3.8/site-packages/marvincar_nav
+byte-compiling /home/carlos/MARVIN/install/marvincar_nav/lib/python3.8/site-packages/marvincar_nav/scan_filter.py to scan_filter.cpython-38.pyc
+byte-compiling /home/carlos/MARVIN/install/marvincar_nav/lib/python3.8/site-packages/marvincar_nav/__init__.py to __init__.cpython-38.pyc
+running install_data
+creating /home/carlos/MARVIN/install/marvincar_nav/share/ament_index
+creating /home/carlos/MARVIN/install/marvincar_nav/share/ament_index/resource_index
+creating /home/carlos/MARVIN/install/marvincar_nav/share/ament_index/resource_index/packages
+copying resource/marvincar_nav -> /home/carlos/MARVIN/install/marvincar_nav/share/ament_index/resource_index/packages
+copying package.xml -> /home/carlos/MARVIN/install/marvincar_nav/share/marvincar_nav
+creating /home/carlos/MARVIN/install/marvincar_nav/share/marvincar_nav/launch
+copying launch/view_map_launch.py -> /home/carlos/MARVIN/install/marvincar_nav/share/marvincar_nav/launch
+copying launch/mapping_launch.py -> /home/carlos/MARVIN/install/marvincar_nav/share/marvincar_nav/launch
+copying launch/full_viz_control_launch.py -> /home/carlos/MARVIN/install/marvincar_nav/share/marvincar_nav/launch
+copying launch/navigation_dwa_launch.py -> /home/carlos/MARVIN/install/marvincar_nav/share/marvincar_nav/launch
+creating /home/carlos/MARVIN/install/marvincar_nav/share/marvincar_nav/rviz
+copying rviz/nav.rviz -> /home/carlos/MARVIN/install/marvincar_nav/share/marvincar_nav/rviz
+copying rviz/map.rviz -> /home/carlos/MARVIN/install/marvincar_nav/share/marvincar_nav/rviz
+creating /home/carlos/MARVIN/install/marvincar_nav/share/marvincar_nav/params
+copying params/dwa_nav_params.yaml -> /home/carlos/MARVIN/install/marvincar_nav/share/marvincar_nav/params
+copying params/lds_2d.lua -> /home/carlos/MARVIN/install/marvincar_nav/share/marvincar_nav/params
+creating /home/carlos/MARVIN/install/marvincar_nav/share/marvincar_nav/config
+copying config/localization.yaml -> /home/carlos/MARVIN/install/marvincar_nav/share/marvincar_nav/config
+copying config/slam.yaml -> /home/carlos/MARVIN/install/marvincar_nav/share/marvincar_nav/config
+creating /home/carlos/MARVIN/install/marvincar_nav/share/marvincar_nav/maps
+copying maps/marvincar.pgm -> /home/carlos/MARVIN/install/marvincar_nav/share/marvincar_nav/maps
+copying maps/marvincar.posegraph -> /home/carlos/MARVIN/install/marvincar_nav/share/marvincar_nav/maps
+copying maps/marvincar.yaml -> /home/carlos/MARVIN/install/marvincar_nav/share/marvincar_nav/maps
+copying maps/marvincar.data -> /home/carlos/MARVIN/install/marvincar_nav/share/marvincar_nav/maps
+running install_egg_info
+Copying ../../../build/marvincar_nav/marvincar_nav.egg-info to /home/carlos/MARVIN/install/marvincar_nav/lib/python3.8/site-packages/marvincar_nav-0.0.0-py3.8.egg-info
+running install_scripts
+Installing scan_filter script to /home/carlos/MARVIN/install/marvincar_nav/lib/marvincar_nav
+writing list of installed files to '/home/carlos/MARVIN/build/marvincar_nav/install.log'

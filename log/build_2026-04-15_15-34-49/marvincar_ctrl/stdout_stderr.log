@@ -1,0 +1,41 @@
+running egg_info
+creating ../../../build/marvincar_ctrl/marvincar_ctrl.egg-info
+writing ../../../build/marvincar_ctrl/marvincar_ctrl.egg-info/PKG-INFO
+writing dependency_links to ../../../build/marvincar_ctrl/marvincar_ctrl.egg-info/dependency_links.txt
+writing entry points to ../../../build/marvincar_ctrl/marvincar_ctrl.egg-info/entry_points.txt
+writing requirements to ../../../build/marvincar_ctrl/marvincar_ctrl.egg-info/requires.txt
+writing top-level names to ../../../build/marvincar_ctrl/marvincar_ctrl.egg-info/top_level.txt
+writing manifest file '../../../build/marvincar_ctrl/marvincar_ctrl.egg-info/SOURCES.txt'
+reading manifest file '../../../build/marvincar_ctrl/marvincar_ctrl.egg-info/SOURCES.txt'
+writing manifest file '../../../build/marvincar_ctrl/marvincar_ctrl.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/carlos/MARVIN/build/marvincar_ctrl/build
+creating /home/carlos/MARVIN/build/marvincar_ctrl/build/lib
+creating /home/carlos/MARVIN/build/marvincar_ctrl/build/lib/marvincar_ctrl
+copying marvincar_ctrl/marvin_keyboard.py -> /home/carlos/MARVIN/build/marvincar_ctrl/build/lib/marvincar_ctrl
+copying marvincar_ctrl/__init__.py -> /home/carlos/MARVIN/build/marvincar_ctrl/build/lib/marvincar_ctrl
+copying marvincar_ctrl/marvin_joy.py -> /home/carlos/MARVIN/build/marvincar_ctrl/build/lib/marvincar_ctrl
+running install
+running install_lib
+creating /home/carlos/MARVIN/install/marvincar_ctrl/lib/python3.8/site-packages/marvincar_ctrl
+copying /home/carlos/MARVIN/build/marvincar_ctrl/build/lib/marvincar_ctrl/marvin_keyboard.py -> /home/carlos/MARVIN/install/marvincar_ctrl/lib/python3.8/site-packages/marvincar_ctrl
+copying /home/carlos/MARVIN/build/marvincar_ctrl/build/lib/marvincar_ctrl/__init__.py -> /home/carlos/MARVIN/install/marvincar_ctrl/lib/python3.8/site-packages/marvincar_ctrl
+copying /home/carlos/MARVIN/build/marvincar_ctrl/build/lib/marvincar_ctrl/marvin_joy.py -> /home/carlos/MARVIN/install/marvincar_ctrl/lib/python3.8/site-packages/marvincar_ctrl
+byte-compiling /home/carlos/MARVIN/install/marvincar_ctrl/lib/python3.8/site-packages/marvincar_ctrl/marvin_keyboard.py to marvin_keyboard.cpython-38.pyc
+byte-compiling /home/carlos/MARVIN/install/marvincar_ctrl/lib/python3.8/site-packages/marvincar_ctrl/__init__.py to __init__.cpython-38.pyc
+byte-compiling /home/carlos/MARVIN/install/marvincar_ctrl/lib/python3.8/site-packages/marvincar_ctrl/marvin_joy.py to marvin_joy.cpython-38.pyc
+running install_data
+creating /home/carlos/MARVIN/install/marvincar_ctrl/share/ament_index
+creating /home/carlos/MARVIN/install/marvincar_ctrl/share/ament_index/resource_index
+creating /home/carlos/MARVIN/install/marvincar_ctrl/share/ament_index/resource_index/packages
+copying resource/marvincar_ctrl -> /home/carlos/MARVIN/install/marvincar_ctrl/share/ament_index/resource_index/packages
+copying package.xml -> /home/carlos/MARVIN/install/marvincar_ctrl/share/marvincar_ctrl
+creating /home/carlos/MARVIN/install/marvincar_ctrl/share/marvincar_ctrl/launch
+copying launch/marvincar_joy_launch.py -> /home/carlos/MARVIN/install/marvincar_ctrl/share/marvincar_ctrl/launch
+running install_egg_info
+Copying ../../../build/marvincar_ctrl/marvincar_ctrl.egg-info to /home/carlos/MARVIN/install/marvincar_ctrl/lib/python3.8/site-packages/marvincar_ctrl-0.0.0-py3.8.egg-info
+running install_scripts
+Installing marvin_joy script to /home/carlos/MARVIN/install/marvincar_ctrl/lib/marvincar_ctrl
+Installing marvin_keyboard script to /home/carlos/MARVIN/install/marvincar_ctrl/lib/marvincar_ctrl
+writing list of installed files to '/home/carlos/MARVIN/build/marvincar_ctrl/install.log'

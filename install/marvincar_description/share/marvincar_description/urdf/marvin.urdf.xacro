@@ -1,0 +1,419 @@
+<?xml version="1.0"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by
+Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot name="vehicle_model" xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <xacro:include filename="$(find marvincar_description)/urdf/sensors/imu.xacro" />
+    <xacro:include filename="$(find marvincar_description)/urdf/sensors/lidar.xacro" />
+    <xacro:include filename="$(find marvincar_description)/urdf/sensors/camera_right.xacro" />
+    <xacro:include filename="$(find marvincar_description)/urdf/sensors/camera_left.xacro" />
+    <xacro:include filename="$(find marvincar_description)/urdf/sensors/camera_depth.xacro" />
+    
+    <link
+        name="base_link">
+        <inertial>
+            <origin
+                xyz="-0.014373 0.0003891 0.017384"
+                rpy="0 0 0" />
+            <mass
+                value="0.91719" />
+            <inertia
+                ixx="0.0006622"
+                ixy="-2.7497E-06"
+                ixz="1.2902E-05"
+                iyy="0.0014944"
+                iyz="3.6626E-07"
+                izz="0.0018197" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0.02"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="package://marvincar_description/meshes/base_link.STL" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.47059 0.47059 0.47059 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="package://marvincar_description/meshes/base_link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <link
+        name="back_wheel_left">
+        <inertial>
+            <origin
+                xyz="1.1102E-16 -0.0055555 3.6969E-08"
+                rpy="0 0 0" />
+            <mass
+                value="0.038543" />
+            <inertia
+                ixx="1.5832E-05"
+                ixy="-1.9172E-21"
+                ixz="2.1838E-21"
+                iyy="2.7611E-05"
+                iyz="-7.8379E-11"
+                izz="1.5832E-05" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="package://marvincar_description/meshes/back_wheel_left.STL" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.79216 0.81961 0.93333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="package://marvincar_description/meshes/back_wheel_left.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint
+        name="joint_back_wheel_left"
+        type="continuous">
+        <origin
+            xyz="-0.12828 0.083987 -0.02714"
+            rpy="0 0 0" />
+        <parent
+            link="base_link" />
+        <child
+            link="back_wheel_left" />
+        <axis
+            xyz="0 1 0" />
+        <limit
+            effort="100"
+            velocity="100" />
+        <dynamics
+            friction="0.1" />
+    </joint>
+    <link
+        name="back_wheel_right">
+        <inertial>
+            <origin
+                xyz="5.5511E-17 0.0055555 3.6691E-08"
+                rpy="0 0 0" />
+            <mass
+                value="0.038543" />
+            <inertia
+                ixx="1.5832E-05"
+                ixy="-5.5769E-21"
+                ixz="1.8661E-21"
+                iyy="2.7611E-05"
+                iyz="7.7791E-11"
+                izz="1.5832E-05" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="package://marvincar_description/meshes/back_wheel_right.STL" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.79216 0.81961 0.93333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="package://marvincar_description/meshes/back_wheel_right.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint
+        name="joint_back_wheel_right"
+        type="continuous">
+        <origin
+            xyz="-0.12828 -0.08197 -0.02714"
+            rpy="0 0 0" />
+        <parent
+            link="base_link" />
+        <child
+            link="back_wheel_right" />
+        <axis
+            xyz="0 1 0" />
+        <limit
+            effort="100"
+            velocity="100" />
+        <dynamics
+            friction="0.1" />
+    </joint>
+    <link
+        name="front_handle_left">
+        <inertial>
+            <origin
+                xyz="-0.003022 0.0098208 -0.010918"
+                rpy="0 0 0" />
+            <mass
+                value="0.0035804" />
+            <inertia
+                ixx="2.2725E-07"
+                ixy="-8.8041E-08"
+                ixz="-2.6452E-13"
+                iyy="3.3018E-07"
+                iyz="7.2923E-14"
+                izz="3.6051E-07" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="package://marvincar_description/meshes/front_handle_left.STL" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.79216 0.81961 0.93333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="package://marvincar_description/meshes/front_handle_left.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint
+        name="joint_front_handle_left"
+        type="revolute">
+        <origin
+            xyz="0.13072 0.057509 -0.010582"
+            rpy="0 0 0" />
+        <parent
+            link="base_link" />
+        <child
+            link="front_handle_left" />
+        <axis
+            xyz="0 0 1" />
+        <limit
+            lower="-0.87267"
+            upper="0.87267"
+            effort="10"
+            velocity="1" />
+        <dynamics
+            friction="0.1" />
+    </joint>
+    <link
+        name="front_wheel_left">
+        <inertial>
+            <origin
+                xyz="1.6914E-17 -0.0064834 2.7756E-16"
+                rpy="0 0 0" />
+            <mass
+                value="0.063174" />
+            <inertia
+                ixx="3.6075E-05"
+                ixy="-7.3809E-21"
+                ixz="-3.1764E-22"
+                iyy="6.2912E-05"
+                iyz="3.9705E-21"
+                izz="3.6075E-05" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="package://marvincar_description/meshes/front_wheel_left.STL" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.79216 0.81961 0.93333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="package://marvincar_description/meshes/front_wheel_left.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint
+        name="joint_front_wheel_left"
+        type="continuous">
+        <origin
+            xyz="0 0.026485 -0.010918"
+            rpy="0 0 0" />
+        <parent
+            link="front_handle_left" />
+        <child
+            link="front_wheel_left" />
+        <axis
+            xyz="0 1 0" />
+        <limit
+            effort="100"
+            velocity="100" />
+        <dynamics
+            friction="0.1" />
+    </joint>
+    <link
+        name="front_handle_right">
+        <inertial>
+            <origin
+                xyz="-0.0030221 -0.0098209 -0.010918"
+                rpy="0 0 0" />
+            <mass
+                value="0.0035804" />
+            <inertia
+                ixx="2.2725E-07"
+                ixy="8.8041E-08"
+                ixz="2.8912E-13"
+                iyy="3.3018E-07"
+                iyz="1.2676E-13"
+                izz="3.6051E-07" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="package://marvincar_description/meshes/front_handle_right.STL" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.79216 0.81961 0.93333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="package://marvincar_description/meshes/front_handle_right.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint
+        name="joint_front_handle_right"
+        type="revolute">
+        <origin
+            xyz="0.13072 -0.055491 -0.010582"
+            rpy="0 0 0" />
+        <parent
+            link="base_link" />
+        <child
+            link="front_handle_right" />
+        <axis
+            xyz="0 0 1" />
+        <limit
+            lower="-0.87267"
+            upper="0.87267"
+            effort="10"
+            velocity="1" />
+        <dynamics
+            friction="0.1" />
+    </joint>
+    <link
+        name="front_wheel_right">
+        <inertial>
+            <origin
+                xyz="1.3444E-17 0.0064834 2.2204E-16"
+                rpy="0 0 0" />
+            <mass
+                value="0.063174" />
+            <inertia
+                ixx="3.6075E-05"
+                ixy="-9.8931E-22"
+                ixz="-1.8794E-21"
+                iyy="6.2912E-05"
+                iyz="1.2176E-21"
+                izz="3.6075E-05" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="package://marvincar_description/meshes/front_wheel_right.STL" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.79216 0.81961 0.93333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="package://marvincar_description/meshes/front_wheel_right.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint
+        name="joint_front_wheel_right"
+        type="continuous">
+        <origin
+            xyz="0 -0.026485 -0.010918"
+            rpy="0 0 0" />
+        <parent
+            link="front_handle_right" />
+        <child
+            link="front_wheel_right" />
+        <axis
+            xyz="0 1 0" />
+        <limit
+            effort="100"
+            velocity="100" />
+        <dynamics
+            friction="0.1" />
+    </joint>
+
+    <!-- Robot Footprint -->
+    <link name="base_footprint" />
+
+    <joint name="base_joint" type="fixed">
+        <parent link="base_footprint" />
+        <child link="base_link" />
+        <origin xyz="0 0 0.06" rpy="0 0 0" />
+    </joint>
+
+    <xacro:lidar
+        frame_id="lidar">
+    </xacro:lidar>
+</robot>

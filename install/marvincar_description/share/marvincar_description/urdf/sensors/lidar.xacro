@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+    <xacro:macro name="lidar"
+        params="frame_id">
+        <link name="${frame_id}">
+            <visual>
+                <origin
+                    xyz="0 0 0"
+                    rpy="0 0 0" />
+                <geometry>
+                    <mesh
+                        filename="package://marvincar_description/meshes/lidar.STL" />
+                </geometry>
+                <material
+                    name="">
+                    <color
+                        rgba="0 0 0 1" />
+                </material>
+            </visual>
+            <collision>
+                <origin
+                    xyz="0 0 0"
+                    rpy="0 0 0" />
+                <geometry>
+                    <mesh
+                        filename="package://marvincar_description/meshes/lidar.STL" />
+                </geometry>
+            </collision>
+
+            <inertial>
+                <origin xyz="0 0 -1.3261E-05"
+                    rpy="0 0 0" />
+                <mass value="0.1" />
+                <inertia ixx="${(2/5) * 0.1 * (0.0375 * 0.0375)}" ixy="0" ixz="0"
+                    iyy="${(2/5) * 0.1 * (0.0375 * 0.0375)}" iyz="0"
+                    izz="${(2/5) * 0.1 * (0.0375 * 0.0375)}" />
+            </inertial>
+        </link>
+
+        <joint name="${frame_id}_to_base_link" type="fixed">
+            <origin
+                xyz="0 0 0.155"
+                rpy="0 0 0" />
+            <parent link="base_link" />
+            <child link="${frame_id}" />
+            <axis
+                xyz="0 0 0" />
+        </joint>
+
+    </xacro:macro>
+</robot>

@@ -1,0 +1,16 @@
+/home/carlos/MARVIN/install/marvincar_base_node/lib/marvincar_base_node/base_node
+/home/carlos/MARVIN/install/marvincar_base_node/share/ament_index/resource_index/package_run_dependencies/marvincar_base_node
+/home/carlos/MARVIN/install/marvincar_base_node/share/ament_index/resource_index/parent_prefix_path/marvincar_base_node
+/home/carlos/MARVIN/install/marvincar_base_node/share/marvincar_base_node/environment/ament_prefix_path.sh
+/home/carlos/MARVIN/install/marvincar_base_node/share/marvincar_base_node/environment/ament_prefix_path.dsv
+/home/carlos/MARVIN/install/marvincar_base_node/share/marvincar_base_node/environment/path.sh
+/home/carlos/MARVIN/install/marvincar_base_node/share/marvincar_base_node/environment/path.dsv
+/home/carlos/MARVIN/install/marvincar_base_node/share/marvincar_base_node/local_setup.bash
+/home/carlos/MARVIN/install/marvincar_base_node/share/marvincar_base_node/local_setup.sh
+/home/carlos/MARVIN/install/marvincar_base_node/share/marvincar_base_node/local_setup.zsh
+/home/carlos/MARVIN/install/marvincar_base_node/share/marvincar_base_node/local_setup.dsv
+/home/carlos/MARVIN/install/marvincar_base_node/share/marvincar_base_node/package.dsv
+/home/carlos/MARVIN/install/marvincar_base_node/share/ament_index/resource_index/packages/marvincar_base_node
+/home/carlos/MARVIN/install/marvincar_base_node/share/marvincar_base_node/cmake/marvincar_base_nodeConfig.cmake
+/home/carlos/MARVIN/install/marvincar_base_node/share/marvincar_base_node/cmake/marvincar_base_nodeConfig-version.cmake
+/home/carlos/MARVIN/install/marvincar_base_node/share/marvincar_base_node/package.xml

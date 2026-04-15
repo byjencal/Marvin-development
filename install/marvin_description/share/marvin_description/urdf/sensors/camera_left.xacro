@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <joint name="joint_camera_left" type="fixed">
+        <origin xyz="-0.005 0.047832 0.115" rpy="0 0 ${pi/2}" />
+        <parent link="base_link" />
+        <child link="camera_left" />
+        <axis xyz="0 0 0" />
+    </joint>
+
+    <link name="camera_left">
+        <inertial>
+            <origin
+                xyz="1.361E-07 0.00025619 0.0067093"
+                rpy="0 0 0" />
+            <mass
+                value="0.0050148" />
+            <inertia
+                ixx="3.1349E-07"
+                ixy="3.0256E-12"
+                ixz="-9.2702E-12"
+                iyy="3.4979E-07"
+                iyz="-3.6066E-11"
+                izz="2.6383E-07" />
+        </inertial>
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 ${-pi/2}" />
+            <geometry>
+                <mesh
+                    filename="package://marvin_description/meshes/camera_left.STL" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.25098 0.25098 0.25098 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 ${-pi/2}" />
+            <geometry>
+                <mesh
+                    filename="package://marvin_description/meshes/camera_left.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="joint_camera_optical_left" type="fixed">
+        <origin xyz="0 0 0" rpy="${pi/2} 0 ${pi/2}" />
+        <parent link="camera_left" />
+        <child link="camera_optical_left" />
+        <axis xyz="0 0 0" />
+    </joint>
+    <link name="camera_optical_left"></link>
+
+    <gazebo reference="camera_left">
+        <sensor name="camera_left" type="camera">
+            <pose>0 0 0 0 0 0</pose>
+            <visualize>false</visualize>
+            <update_rate>10</update_rate>
+            <camera>
+                <horizontal_fov>1.089</horizontal_fov>
+                <image>
+                    <width>640</width>
+                    <height>480</height>
+                    <format>R8G8B8</format>
+                </image>
+                <clip>
+                    <near>0.05</near>
+                    <far>8.0</far>
+                </clip>
+            </camera>
+            <plugin name="camera_controller_left" filename="libgazebo_ros_camera.so">
+                <frame_name>camera_optical_left</frame_name>
+            </plugin>
+        </sensor>
+    </gazebo>
+</robot>

@@ -1,0 +1,57 @@
+[1.086s] Invoking command in '/home/carlos/MARVIN/marvin_real/src/marvincar_description': PYTHONPATH=/home/carlos/MARVIN/build/marvincar_description/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/carlos/MARVIN/install/marvincar_description/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/marvincar_description build --build-base /home/carlos/MARVIN/build/marvincar_description/build install --record /home/carlos/MARVIN/build/marvincar_description/install.log --install-scripts $base/lib/marvincar_description --single-version-externally-managed install_data
+[1.406s] running egg_info
+[1.407s] creating ../../../build/marvincar_description/marvincar_description.egg-info
+[1.407s] writing ../../../build/marvincar_description/marvincar_description.egg-info/PKG-INFO
+[1.408s] writing dependency_links to ../../../build/marvincar_description/marvincar_description.egg-info/dependency_links.txt
+[1.408s] writing entry points to ../../../build/marvincar_description/marvincar_description.egg-info/entry_points.txt
+[1.408s] writing requirements to ../../../build/marvincar_description/marvincar_description.egg-info/requires.txt
+[1.408s] writing top-level names to ../../../build/marvincar_description/marvincar_description.egg-info/top_level.txt
+[1.421s] writing manifest file '../../../build/marvincar_description/marvincar_description.egg-info/SOURCES.txt'
+[1.478s] reading manifest file '../../../build/marvincar_description/marvincar_description.egg-info/SOURCES.txt'
+[1.479s] writing manifest file '../../../build/marvincar_description/marvincar_description.egg-info/SOURCES.txt'
+[1.479s] running build
+[1.488s] running build_py
+[1.489s] creating /home/carlos/MARVIN/build/marvincar_description/build
+[1.489s] creating /home/carlos/MARVIN/build/marvincar_description/build/lib
+[1.489s] creating /home/carlos/MARVIN/build/marvincar_description/build/lib/marvincar_description
+[1.489s] copying marvincar_description/__init__.py -> /home/carlos/MARVIN/build/marvincar_description/build/lib/marvincar_description
+[1.489s] running install
+[1.490s] running install_lib
+[1.491s] creating /home/carlos/MARVIN/install/marvincar_description/lib/python3.8/site-packages/marvincar_description
+[1.491s] copying /home/carlos/MARVIN/build/marvincar_description/build/lib/marvincar_description/__init__.py -> /home/carlos/MARVIN/install/marvincar_description/lib/python3.8/site-packages/marvincar_description
+[1.499s] byte-compiling /home/carlos/MARVIN/install/marvincar_description/lib/python3.8/site-packages/marvincar_description/__init__.py to __init__.cpython-38.pyc
+[1.504s] running install_data
+[1.513s] creating /home/carlos/MARVIN/install/marvincar_description/share/ament_index
+[1.513s] creating /home/carlos/MARVIN/install/marvincar_description/share/ament_index/resource_index
+[1.513s] creating /home/carlos/MARVIN/install/marvincar_description/share/ament_index/resource_index/packages
+[1.513s] copying resource/marvincar_description -> /home/carlos/MARVIN/install/marvincar_description/share/ament_index/resource_index/packages
+[1.513s] copying package.xml -> /home/carlos/MARVIN/install/marvincar_description/share/marvincar_description
+[1.513s] creating /home/carlos/MARVIN/install/marvincar_description/share/marvincar_description/launch
+[1.513s] copying launch/display_marvincar.launch.py -> /home/carlos/MARVIN/install/marvincar_description/share/marvincar_description/launch
+[1.513s] creating /home/carlos/MARVIN/install/marvincar_description/share/marvincar_description/urdf
+[1.513s] copying urdf/marvin.urdf.xacro -> /home/carlos/MARVIN/install/marvincar_description/share/marvincar_description/urdf
+[1.515s] creating /home/carlos/MARVIN/install/marvincar_description/share/marvincar_description/urdf/sensors
+[1.516s] copying urdf/sensors/camera_depth.xacro -> /home/carlos/MARVIN/install/marvincar_description/share/marvincar_description/urdf/sensors
+[1.516s] copying urdf/sensors/imu.xacro -> /home/carlos/MARVIN/install/marvincar_description/share/marvincar_description/urdf/sensors
+[1.516s] copying urdf/sensors/camera_right.xacro -> /home/carlos/MARVIN/install/marvincar_description/share/marvincar_description/urdf/sensors
+[1.516s] copying urdf/sensors/lidar.xacro -> /home/carlos/MARVIN/install/marvincar_description/share/marvincar_description/urdf/sensors
+[1.517s] copying urdf/sensors/camera_left.xacro -> /home/carlos/MARVIN/install/marvincar_description/share/marvincar_description/urdf/sensors
+[1.520s] creating /home/carlos/MARVIN/install/marvincar_description/share/marvincar_description/meshes
+[1.521s] copying meshes/camera_right.STL -> /home/carlos/MARVIN/install/marvincar_description/share/marvincar_description/meshes
+[1.522s] copying meshes/front_wheel_left.STL -> /home/carlos/MARVIN/install/marvincar_description/share/marvincar_description/meshes
+[1.533s] copying meshes/camera_left.STL -> /home/carlos/MARVIN/install/marvincar_description/share/marvincar_description/meshes
+[1.533s] copying meshes/base_link.STL -> /home/carlos/MARVIN/install/marvincar_description/share/marvincar_description/meshes
+[1.539s] copying meshes/depth_camera.STL -> /home/carlos/MARVIN/install/marvincar_description/share/marvincar_description/meshes
+[1.544s] copying meshes/back_wheel_right.STL -> /home/carlos/MARVIN/install/marvincar_description/share/marvincar_description/meshes
+[1.544s] copying meshes/lidar.STL -> /home/carlos/MARVIN/install/marvincar_description/share/marvincar_description/meshes
+[1.544s] copying meshes/front_wheel_right.STL -> /home/carlos/MARVIN/install/marvincar_description/share/marvincar_description/meshes
+[1.544s] copying meshes/back_wheel_left.STL -> /home/carlos/MARVIN/install/marvincar_description/share/marvincar_description/meshes
+[1.544s] copying meshes/front_handle_left.STL -> /home/carlos/MARVIN/install/marvincar_description/share/marvincar_description/meshes
+[1.545s] copying meshes/front_handle_right.STL -> /home/carlos/MARVIN/install/marvincar_description/share/marvincar_description/meshes
+[1.545s] creating /home/carlos/MARVIN/install/marvincar_description/share/marvincar_description/rviz
+[1.545s] copying rviz/marvincar.rviz -> /home/carlos/MARVIN/install/marvincar_description/share/marvincar_description/rviz
+[1.545s] running install_egg_info
+[1.546s] Copying ../../../build/marvincar_description/marvincar_description.egg-info to /home/carlos/MARVIN/install/marvincar_description/lib/python3.8/site-packages/marvincar_description-0.0.0-py3.8.egg-info
+[1.547s] running install_scripts
+[1.585s] writing list of installed files to '/home/carlos/MARVIN/build/marvincar_description/install.log'
+[1.620s] Invoked command in '/home/carlos/MARVIN/marvin_real/src/marvincar_description' returned '0': PYTHONPATH=/home/carlos/MARVIN/build/marvincar_description/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/carlos/MARVIN/install/marvincar_description/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/marvincar_description build --build-base /home/carlos/MARVIN/build/marvincar_description/build install --record /home/carlos/MARVIN/build/marvincar_description/install.log --install-scripts $base/lib/marvincar_description --single-version-externally-managed install_data

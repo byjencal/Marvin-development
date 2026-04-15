@@ -1,0 +1,52 @@
+[1.099s] Invoking command in '/home/carlos/MARVIN/marvin_real/src/marvincar_laser': PYTHONPATH=/home/carlos/MARVIN/build/marvincar_laser/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/carlos/MARVIN/install/marvincar_laser/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/marvincar_laser build --build-base /home/carlos/MARVIN/build/marvincar_laser/build install --record /home/carlos/MARVIN/build/marvincar_laser/install.log --install-scripts $base/lib/marvincar_laser --single-version-externally-managed install_data
+[1.406s] running egg_info
+[1.408s] creating ../../../build/marvincar_laser/marvincar_laser.egg-info
+[1.408s] writing ../../../build/marvincar_laser/marvincar_laser.egg-info/PKG-INFO
+[1.409s] writing dependency_links to ../../../build/marvincar_laser/marvincar_laser.egg-info/dependency_links.txt
+[1.409s] writing entry points to ../../../build/marvincar_laser/marvincar_laser.egg-info/entry_points.txt
+[1.409s] writing requirements to ../../../build/marvincar_laser/marvincar_laser.egg-info/requires.txt
+[1.409s] writing top-level names to ../../../build/marvincar_laser/marvincar_laser.egg-info/top_level.txt
+[1.411s] writing manifest file '../../../build/marvincar_laser/marvincar_laser.egg-info/SOURCES.txt'
+[1.460s] reading manifest file '../../../build/marvincar_laser/marvincar_laser.egg-info/SOURCES.txt'
+[1.461s] writing manifest file '../../../build/marvincar_laser/marvincar_laser.egg-info/SOURCES.txt'
+[1.461s] running build
+[1.461s] running build_py
+[1.461s] creating /home/carlos/MARVIN/build/marvincar_laser/build
+[1.461s] creating /home/carlos/MARVIN/build/marvincar_laser/build/lib
+[1.461s] creating /home/carlos/MARVIN/build/marvincar_laser/build/lib/marvincar_laser
+[1.462s] copying marvincar_laser/laser_Avoidance.py -> /home/carlos/MARVIN/build/marvincar_laser/build/lib/marvincar_laser
+[1.462s] copying marvincar_laser/__init__.py -> /home/carlos/MARVIN/build/marvincar_laser/build/lib/marvincar_laser
+[1.462s] copying marvincar_laser/laser_Tracker.py -> /home/carlos/MARVIN/build/marvincar_laser/build/lib/marvincar_laser
+[1.462s] copying marvincar_laser/laser_Warning.py -> /home/carlos/MARVIN/build/marvincar_laser/build/lib/marvincar_laser
+[1.462s] copying marvincar_laser/common.py -> /home/carlos/MARVIN/build/marvincar_laser/build/lib/marvincar_laser
+[1.462s] running install
+[1.464s] running install_lib
+[1.465s] creating /home/carlos/MARVIN/install/marvincar_laser/lib/python3.8/site-packages/marvincar_laser
+[1.466s] copying /home/carlos/MARVIN/build/marvincar_laser/build/lib/marvincar_laser/laser_Avoidance.py -> /home/carlos/MARVIN/install/marvincar_laser/lib/python3.8/site-packages/marvincar_laser
+[1.466s] copying /home/carlos/MARVIN/build/marvincar_laser/build/lib/marvincar_laser/__init__.py -> /home/carlos/MARVIN/install/marvincar_laser/lib/python3.8/site-packages/marvincar_laser
+[1.466s] copying /home/carlos/MARVIN/build/marvincar_laser/build/lib/marvincar_laser/laser_Tracker.py -> /home/carlos/MARVIN/install/marvincar_laser/lib/python3.8/site-packages/marvincar_laser
+[1.469s] copying /home/carlos/MARVIN/build/marvincar_laser/build/lib/marvincar_laser/laser_Warning.py -> /home/carlos/MARVIN/install/marvincar_laser/lib/python3.8/site-packages/marvincar_laser
+[1.469s] copying /home/carlos/MARVIN/build/marvincar_laser/build/lib/marvincar_laser/common.py -> /home/carlos/MARVIN/install/marvincar_laser/lib/python3.8/site-packages/marvincar_laser
+[1.471s] byte-compiling /home/carlos/MARVIN/install/marvincar_laser/lib/python3.8/site-packages/marvincar_laser/laser_Avoidance.py to laser_Avoidance.cpython-38.pyc
+[1.475s] byte-compiling /home/carlos/MARVIN/install/marvincar_laser/lib/python3.8/site-packages/marvincar_laser/__init__.py to __init__.cpython-38.pyc
+[1.475s] byte-compiling /home/carlos/MARVIN/install/marvincar_laser/lib/python3.8/site-packages/marvincar_laser/laser_Tracker.py to laser_Tracker.cpython-38.pyc
+[1.477s] byte-compiling /home/carlos/MARVIN/install/marvincar_laser/lib/python3.8/site-packages/marvincar_laser/laser_Warning.py to laser_Warning.cpython-38.pyc
+[1.478s] byte-compiling /home/carlos/MARVIN/install/marvincar_laser/lib/python3.8/site-packages/marvincar_laser/common.py to common.cpython-38.pyc
+[1.479s] running install_data
+[1.479s] creating /home/carlos/MARVIN/install/marvincar_laser/share/ament_index
+[1.480s] creating /home/carlos/MARVIN/install/marvincar_laser/share/ament_index/resource_index
+[1.480s] creating /home/carlos/MARVIN/install/marvincar_laser/share/ament_index/resource_index/packages
+[1.481s] copying resource/marvincar_laser -> /home/carlos/MARVIN/install/marvincar_laser/share/ament_index/resource_index/packages
+[1.481s] copying package.xml -> /home/carlos/MARVIN/install/marvincar_laser/share/marvincar_laser
+[1.481s] creating /home/carlos/MARVIN/install/marvincar_laser/share/marvincar_laser/launch
+[1.481s] copying launch/laser_Avoidance.launch.py -> /home/carlos/MARVIN/install/marvincar_laser/share/marvincar_laser/launch
+[1.482s] copying launch/laser_Warning.launch.py -> /home/carlos/MARVIN/install/marvincar_laser/share/marvincar_laser/launch
+[1.482s] copying launch/laser_Tracker.launch.py -> /home/carlos/MARVIN/install/marvincar_laser/share/marvincar_laser/launch
+[1.482s] running install_egg_info
+[1.485s] Copying ../../../build/marvincar_laser/marvincar_laser.egg-info to /home/carlos/MARVIN/install/marvincar_laser/lib/python3.8/site-packages/marvincar_laser-0.0.0-py3.8.egg-info
+[1.486s] running install_scripts
+[1.518s] Installing laser_Avoidance script to /home/carlos/MARVIN/install/marvincar_laser/lib/marvincar_laser
+[1.519s] Installing laser_Tracker script to /home/carlos/MARVIN/install/marvincar_laser/lib/marvincar_laser
+[1.519s] Installing laser_Warning script to /home/carlos/MARVIN/install/marvincar_laser/lib/marvincar_laser
+[1.520s] writing list of installed files to '/home/carlos/MARVIN/build/marvincar_laser/install.log'
+[1.560s] Invoked command in '/home/carlos/MARVIN/marvin_real/src/marvincar_laser' returned '0': PYTHONPATH=/home/carlos/MARVIN/build/marvincar_laser/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/carlos/MARVIN/install/marvincar_laser/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/marvincar_laser build --build-base /home/carlos/MARVIN/build/marvincar_laser/build install --record /home/carlos/MARVIN/build/marvincar_laser/install.log --install-scripts $base/lib/marvincar_laser --single-version-externally-managed install_data

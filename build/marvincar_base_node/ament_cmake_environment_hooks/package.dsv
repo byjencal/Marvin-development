@@ -1,0 +1,4 @@
+source;share/marvincar_base_node/local_setup.bash
+source;share/marvincar_base_node/local_setup.dsv
+source;share/marvincar_base_node/local_setup.sh
+source;share/marvincar_base_node/local_setup.zsh

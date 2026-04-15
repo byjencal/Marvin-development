@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+    <joint name="joint_camera_depth" type="fixed">
+        <origin xyz="0.055 0 0.11" rpy="0 0 0" />
+        <parent link="base_link" />
+        <child link="camera_depth" />
+    </joint>
+
+    <link name="camera_depth">
+        <visual>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="package://marvincar_description/meshes/depth_camera.STL" />
+            </geometry>
+            <material
+                name="">
+                <color
+                    rgba="0.79216 0.81961 0.93333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin
+                xyz="0 0 0"
+                rpy="0 0 0" />
+            <geometry>
+                <mesh
+                    filename="package://marvincar_description/meshes/depth_camera.STL" />
+            </geometry>
+        </collision>
+
+        <inertial>
+            <origin xyz="0.055 0 0.09"
+                rpy="0 0 0" />
+            <mass value="0.135" />
+            <inertia ixx="${(1/12) * 0.135 * ((0.124  * 0.124)  + (0.030 * 0.030))}" ixy="0.0"
+                ixz="0.0"
+                iyy="${(1/12) * 0.135 * ((0.030 * 0.030) + (0.030 * 0.030))}" iyz="0.0"
+                izz="${(1/12) * 0.135 * ((0.030 * 0.030) + (0.124  * 0.124))}" />
+        </inertial>
+    </link>
+</robot>
+    

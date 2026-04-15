@@ -1,0 +1,4 @@
+[console_scripts]
+marvin_joy = marvincar_ctrl.marvin_joy:main
+marvin_keyboard = marvincar_ctrl.marvin_keyboard:main
+

@@ -1,0 +1,50 @@
+running egg_info
+creating ../../../build/marvincar_laser/marvincar_laser.egg-info
+writing ../../../build/marvincar_laser/marvincar_laser.egg-info/PKG-INFO
+writing dependency_links to ../../../build/marvincar_laser/marvincar_laser.egg-info/dependency_links.txt
+writing entry points to ../../../build/marvincar_laser/marvincar_laser.egg-info/entry_points.txt
+writing requirements to ../../../build/marvincar_laser/marvincar_laser.egg-info/requires.txt
+writing top-level names to ../../../build/marvincar_laser/marvincar_laser.egg-info/top_level.txt
+writing manifest file '../../../build/marvincar_laser/marvincar_laser.egg-info/SOURCES.txt'
+reading manifest file '../../../build/marvincar_laser/marvincar_laser.egg-info/SOURCES.txt'
+writing manifest file '../../../build/marvincar_laser/marvincar_laser.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/carlos/MARVIN/build/marvincar_laser/build
+creating /home/carlos/MARVIN/build/marvincar_laser/build/lib
+creating /home/carlos/MARVIN/build/marvincar_laser/build/lib/marvincar_laser
+copying marvincar_laser/laser_Avoidance.py -> /home/carlos/MARVIN/build/marvincar_laser/build/lib/marvincar_laser
+copying marvincar_laser/__init__.py -> /home/carlos/MARVIN/build/marvincar_laser/build/lib/marvincar_laser
+copying marvincar_laser/laser_Tracker.py -> /home/carlos/MARVIN/build/marvincar_laser/build/lib/marvincar_laser
+copying marvincar_laser/laser_Warning.py -> /home/carlos/MARVIN/build/marvincar_laser/build/lib/marvincar_laser
+copying marvincar_laser/common.py -> /home/carlos/MARVIN/build/marvincar_laser/build/lib/marvincar_laser
+running install
+running install_lib
+creating /home/carlos/MARVIN/install/marvincar_laser/lib/python3.8/site-packages/marvincar_laser
+copying /home/carlos/MARVIN/build/marvincar_laser/build/lib/marvincar_laser/laser_Avoidance.py -> /home/carlos/MARVIN/install/marvincar_laser/lib/python3.8/site-packages/marvincar_laser
+copying /home/carlos/MARVIN/build/marvincar_laser/build/lib/marvincar_laser/__init__.py -> /home/carlos/MARVIN/install/marvincar_laser/lib/python3.8/site-packages/marvincar_laser
+copying /home/carlos/MARVIN/build/marvincar_laser/build/lib/marvincar_laser/laser_Tracker.py -> /home/carlos/MARVIN/install/marvincar_laser/lib/python3.8/site-packages/marvincar_laser
+copying /home/carlos/MARVIN/build/marvincar_laser/build/lib/marvincar_laser/laser_Warning.py -> /home/carlos/MARVIN/install/marvincar_laser/lib/python3.8/site-packages/marvincar_laser
+copying /home/carlos/MARVIN/build/marvincar_laser/build/lib/marvincar_laser/common.py -> /home/carlos/MARVIN/install/marvincar_laser/lib/python3.8/site-packages/marvincar_laser
+byte-compiling /home/carlos/MARVIN/install/marvincar_laser/lib/python3.8/site-packages/marvincar_laser/laser_Avoidance.py to laser_Avoidance.cpython-38.pyc
+byte-compiling /home/carlos/MARVIN/install/marvincar_laser/lib/python3.8/site-packages/marvincar_laser/__init__.py to __init__.cpython-38.pyc
+byte-compiling /home/carlos/MARVIN/install/marvincar_laser/lib/python3.8/site-packages/marvincar_laser/laser_Tracker.py to laser_Tracker.cpython-38.pyc
+byte-compiling /home/carlos/MARVIN/install/marvincar_laser/lib/python3.8/site-packages/marvincar_laser/laser_Warning.py to laser_Warning.cpython-38.pyc
+byte-compiling /home/carlos/MARVIN/install/marvincar_laser/lib/python3.8/site-packages/marvincar_laser/common.py to common.cpython-38.pyc
+running install_data
+creating /home/carlos/MARVIN/install/marvincar_laser/share/ament_index
+creating /home/carlos/MARVIN/install/marvincar_laser/share/ament_index/resource_index
+creating /home/carlos/MARVIN/install/marvincar_laser/share/ament_index/resource_index/packages
+copying resource/marvincar_laser -> /home/carlos/MARVIN/install/marvincar_laser/share/ament_index/resource_index/packages
+copying package.xml -> /home/carlos/MARVIN/install/marvincar_laser/share/marvincar_laser
+creating /home/carlos/MARVIN/install/marvincar_laser/share/marvincar_laser/launch
+copying launch/laser_Avoidance.launch.py -> /home/carlos/MARVIN/install/marvincar_laser/share/marvincar_laser/launch
+copying launch/laser_Warning.launch.py -> /home/carlos/MARVIN/install/marvincar_laser/share/marvincar_laser/launch
+copying launch/laser_Tracker.launch.py -> /home/carlos/MARVIN/install/marvincar_laser/share/marvincar_laser/launch
+running install_egg_info
+Copying ../../../build/marvincar_laser/marvincar_laser.egg-info to /home/carlos/MARVIN/install/marvincar_laser/lib/python3.8/site-packages/marvincar_laser-0.0.0-py3.8.egg-info
+running install_scripts
+Installing laser_Avoidance script to /home/carlos/MARVIN/install/marvincar_laser/lib/marvincar_laser
+Installing laser_Tracker script to /home/carlos/MARVIN/install/marvincar_laser/lib/marvincar_laser
+Installing laser_Warning script to /home/carlos/MARVIN/install/marvincar_laser/lib/marvincar_laser
+writing list of installed files to '/home/carlos/MARVIN/build/marvincar_laser/install.log'

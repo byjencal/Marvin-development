@@ -1,0 +1,56 @@
+[1.156s] Invoking command in '/home/carlos/MARVIN/marvin_real/src/marvincar_nav': PYTHONPATH=/home/carlos/MARVIN/build/marvincar_nav/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/carlos/MARVIN/install/marvincar_nav/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/marvincar_nav build --build-base /home/carlos/MARVIN/build/marvincar_nav/build install --record /home/carlos/MARVIN/build/marvincar_nav/install.log --install-scripts $base/lib/marvincar_nav --single-version-externally-managed install_data
+[1.530s] running egg_info
+[1.531s] creating ../../../build/marvincar_nav/marvincar_nav.egg-info
+[1.531s] writing ../../../build/marvincar_nav/marvincar_nav.egg-info/PKG-INFO
+[1.532s] writing dependency_links to ../../../build/marvincar_nav/marvincar_nav.egg-info/dependency_links.txt
+[1.533s] writing entry points to ../../../build/marvincar_nav/marvincar_nav.egg-info/entry_points.txt
+[1.533s] writing requirements to ../../../build/marvincar_nav/marvincar_nav.egg-info/requires.txt
+[1.533s] writing top-level names to ../../../build/marvincar_nav/marvincar_nav.egg-info/top_level.txt
+[1.534s] writing manifest file '../../../build/marvincar_nav/marvincar_nav.egg-info/SOURCES.txt'
+[1.581s] reading manifest file '../../../build/marvincar_nav/marvincar_nav.egg-info/SOURCES.txt'
+[1.582s] writing manifest file '../../../build/marvincar_nav/marvincar_nav.egg-info/SOURCES.txt'
+[1.583s] running build
+[1.583s] running build_py
+[1.583s] creating /home/carlos/MARVIN/build/marvincar_nav/build
+[1.584s] creating /home/carlos/MARVIN/build/marvincar_nav/build/lib
+[1.584s] creating /home/carlos/MARVIN/build/marvincar_nav/build/lib/marvincar_nav
+[1.584s] copying marvincar_nav/scan_filter.py -> /home/carlos/MARVIN/build/marvincar_nav/build/lib/marvincar_nav
+[1.585s] copying marvincar_nav/__init__.py -> /home/carlos/MARVIN/build/marvincar_nav/build/lib/marvincar_nav
+[1.585s] running install
+[1.587s] running install_lib
+[1.588s] creating /home/carlos/MARVIN/install/marvincar_nav/lib/python3.8/site-packages/marvincar_nav
+[1.588s] copying /home/carlos/MARVIN/build/marvincar_nav/build/lib/marvincar_nav/scan_filter.py -> /home/carlos/MARVIN/install/marvincar_nav/lib/python3.8/site-packages/marvincar_nav
+[1.588s] copying /home/carlos/MARVIN/build/marvincar_nav/build/lib/marvincar_nav/__init__.py -> /home/carlos/MARVIN/install/marvincar_nav/lib/python3.8/site-packages/marvincar_nav
+[1.589s] byte-compiling /home/carlos/MARVIN/install/marvincar_nav/lib/python3.8/site-packages/marvincar_nav/scan_filter.py to scan_filter.cpython-38.pyc
+[1.593s] byte-compiling /home/carlos/MARVIN/install/marvincar_nav/lib/python3.8/site-packages/marvincar_nav/__init__.py to __init__.cpython-38.pyc
+[1.594s] running install_data
+[1.594s] creating /home/carlos/MARVIN/install/marvincar_nav/share/ament_index
+[1.594s] creating /home/carlos/MARVIN/install/marvincar_nav/share/ament_index/resource_index
+[1.594s] creating /home/carlos/MARVIN/install/marvincar_nav/share/ament_index/resource_index/packages
+[1.594s] copying resource/marvincar_nav -> /home/carlos/MARVIN/install/marvincar_nav/share/ament_index/resource_index/packages
+[1.595s] copying package.xml -> /home/carlos/MARVIN/install/marvincar_nav/share/marvincar_nav
+[1.595s] creating /home/carlos/MARVIN/install/marvincar_nav/share/marvincar_nav/launch
+[1.595s] copying launch/view_map_launch.py -> /home/carlos/MARVIN/install/marvincar_nav/share/marvincar_nav/launch
+[1.595s] copying launch/mapping_launch.py -> /home/carlos/MARVIN/install/marvincar_nav/share/marvincar_nav/launch
+[1.596s] copying launch/full_viz_control_launch.py -> /home/carlos/MARVIN/install/marvincar_nav/share/marvincar_nav/launch
+[1.596s] copying launch/navigation_dwa_launch.py -> /home/carlos/MARVIN/install/marvincar_nav/share/marvincar_nav/launch
+[1.596s] creating /home/carlos/MARVIN/install/marvincar_nav/share/marvincar_nav/rviz
+[1.597s] copying rviz/nav.rviz -> /home/carlos/MARVIN/install/marvincar_nav/share/marvincar_nav/rviz
+[1.597s] copying rviz/map.rviz -> /home/carlos/MARVIN/install/marvincar_nav/share/marvincar_nav/rviz
+[1.597s] creating /home/carlos/MARVIN/install/marvincar_nav/share/marvincar_nav/params
+[1.598s] copying params/dwa_nav_params.yaml -> /home/carlos/MARVIN/install/marvincar_nav/share/marvincar_nav/params
+[1.598s] copying params/lds_2d.lua -> /home/carlos/MARVIN/install/marvincar_nav/share/marvincar_nav/params
+[1.598s] creating /home/carlos/MARVIN/install/marvincar_nav/share/marvincar_nav/config
+[1.599s] copying config/localization.yaml -> /home/carlos/MARVIN/install/marvincar_nav/share/marvincar_nav/config
+[1.599s] copying config/slam.yaml -> /home/carlos/MARVIN/install/marvincar_nav/share/marvincar_nav/config
+[1.599s] creating /home/carlos/MARVIN/install/marvincar_nav/share/marvincar_nav/maps
+[1.599s] copying maps/marvincar.pgm -> /home/carlos/MARVIN/install/marvincar_nav/share/marvincar_nav/maps
+[1.600s] copying maps/marvincar.posegraph -> /home/carlos/MARVIN/install/marvincar_nav/share/marvincar_nav/maps
+[1.609s] copying maps/marvincar.yaml -> /home/carlos/MARVIN/install/marvincar_nav/share/marvincar_nav/maps
+[1.610s] copying maps/marvincar.data -> /home/carlos/MARVIN/install/marvincar_nav/share/marvincar_nav/maps
+[1.611s] running install_egg_info
+[1.614s] Copying ../../../build/marvincar_nav/marvincar_nav.egg-info to /home/carlos/MARVIN/install/marvincar_nav/lib/python3.8/site-packages/marvincar_nav-0.0.0-py3.8.egg-info
+[1.615s] running install_scripts
+[1.640s] Installing scan_filter script to /home/carlos/MARVIN/install/marvincar_nav/lib/marvincar_nav
+[1.641s] writing list of installed files to '/home/carlos/MARVIN/build/marvincar_nav/install.log'
+[1.676s] Invoked command in '/home/carlos/MARVIN/marvin_real/src/marvincar_nav' returned '0': PYTHONPATH=/home/carlos/MARVIN/build/marvincar_nav/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/carlos/MARVIN/install/marvincar_nav/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/marvincar_nav build --build-base /home/carlos/MARVIN/build/marvincar_nav/build install --record /home/carlos/MARVIN/build/marvincar_nav/install.log --install-scripts $base/lib/marvincar_nav --single-version-externally-managed install_data

@@ -1,0 +1,6 @@
+Invoking command in '/home/carlos/MARVIN/build/marvin_lidar': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake /home/carlos/MARVIN/marvin_real/src/marvin_lidar -DCMAKE_INSTALL_PREFIX=/home/carlos/MARVIN/install/marvin_lidar
+Invoked command in '/home/carlos/MARVIN/build/marvin_lidar' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake /home/carlos/MARVIN/marvin_real/src/marvin_lidar -DCMAKE_INSTALL_PREFIX=/home/carlos/MARVIN/install/marvin_lidar
+Invoking command in '/home/carlos/MARVIN/build/marvin_lidar': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/carlos/MARVIN/build/marvin_lidar -- -j8 -l8
+Invoked command in '/home/carlos/MARVIN/build/marvin_lidar' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/carlos/MARVIN/build/marvin_lidar -- -j8 -l8
+Invoking command in '/home/carlos/MARVIN/build/marvin_lidar': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /home/carlos/MARVIN/build/marvin_lidar
+Invoked command in '/home/carlos/MARVIN/build/marvin_lidar' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /home/carlos/MARVIN/build/marvin_lidar

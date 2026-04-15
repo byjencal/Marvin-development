@@ -1,0 +1,6 @@
+[console_scripts]
+Ackman_driver = marvincar_bringup.Ackman_driver:main
+calibrate_angular = marvincar_bringup.calibrate_angular:main
+calibrate_linear = marvincar_bringup.calibrate_linear:main
+patrol = marvincar_bringup.patrol:main
+

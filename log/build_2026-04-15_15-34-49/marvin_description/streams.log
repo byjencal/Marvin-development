@@ -1,0 +1,74 @@
+[0.035s] Invoking command in '/home/carlos/MARVIN/build/marvin_description': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake /home/carlos/MARVIN/marvin_sim/src/marvin_description -DCMAKE_INSTALL_PREFIX=/home/carlos/MARVIN/install/marvin_description
+[0.241s] -- The C compiler identification is GNU 9.4.0
+[0.371s] -- The CXX compiler identification is GNU 9.4.0
+[0.385s] -- Check for working C compiler: /usr/bin/cc
+[0.473s] -- Check for working C compiler: /usr/bin/cc -- works
+[0.474s] -- Detecting C compiler ABI info
+[0.568s] -- Detecting C compiler ABI info - done
+[0.585s] -- Detecting C compile features
+[0.586s] -- Detecting C compile features - done
+[0.589s] -- Check for working CXX compiler: /usr/bin/c++
+[0.681s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[0.683s] -- Detecting CXX compiler ABI info
+[0.777s] -- Detecting CXX compiler ABI info - done
+[0.793s] -- Detecting CXX compile features
+[0.794s] -- Detecting CXX compile features - done
+[0.797s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.829s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[0.829s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[1.085s] -- Found urdf: 2.4.0 (/opt/ros/foxy/share/urdf/cmake)
+[1.123s] -- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+[1.213s] -- Added test 'flake8' to check Python code syntax and style conventions
+[1.214s] -- Added test 'lint_cmake' to check CMake code style
+[1.214s] -- Added test 'pep257' to check Python code against some of the style conventions in PEP 257
+[1.216s] -- Added test 'xmllint' to check XML markup files
+[1.218s] -- Configuring done
+[1.221s] -- Generating done
+[1.223s] -- Build files have been written to: /home/carlos/MARVIN/build/marvin_description
+[1.240s] Invoked command in '/home/carlos/MARVIN/build/marvin_description' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake /home/carlos/MARVIN/marvin_sim/src/marvin_description -DCMAKE_INSTALL_PREFIX=/home/carlos/MARVIN/install/marvin_description
+[1.243s] Invoking command in '/home/carlos/MARVIN/build/marvin_description': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/carlos/MARVIN/build/marvin_description -- -j8 -l8
+[1.465s] Invoked command in '/home/carlos/MARVIN/build/marvin_description' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/carlos/MARVIN/build/marvin_description -- -j8 -l8
+[1.467s] Invoking command in '/home/carlos/MARVIN/build/marvin_description': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /home/carlos/MARVIN/build/marvin_description
+[1.493s] -- Install configuration: ""
+[1.494s] -- Installing: /home/carlos/MARVIN/install/marvin_description/share/marvin_description/launch
+[1.494s] -- Installing: /home/carlos/MARVIN/install/marvin_description/share/marvin_description/launch/description.launch.py
+[1.495s] -- Installing: /home/carlos/MARVIN/install/marvin_description/share/marvin_description/urdf
+[1.495s] -- Installing: /home/carlos/MARVIN/install/marvin_description/share/marvin_description/urdf/marvin.urdf.xacro
+[1.495s] -- Installing: /home/carlos/MARVIN/install/marvin_description/share/marvin_description/urdf/sensors
+[1.496s] -- Installing: /home/carlos/MARVIN/install/marvin_description/share/marvin_description/urdf/sensors/camera_depth.xacro
+[1.496s] -- Installing: /home/carlos/MARVIN/install/marvin_description/share/marvin_description/urdf/sensors/imu.xacro
+[1.496s] -- Installing: /home/carlos/MARVIN/install/marvin_description/share/marvin_description/urdf/sensors/camera_right.xacro
+[1.496s] -- Installing: /home/carlos/MARVIN/install/marvin_description/share/marvin_description/urdf/sensors/lidar.xacro
+[1.496s] -- Installing: /home/carlos/MARVIN/install/marvin_description/share/marvin_description/urdf/sensors/camera_left.xacro
+[1.496s] -- Installing: /home/carlos/MARVIN/install/marvin_description/share/marvin_description/urdf/controller
+[1.496s] -- Installing: /home/carlos/MARVIN/install/marvin_description/share/marvin_description/urdf/controller/ackermann_drive.xacro
+[1.496s] -- Installing: /home/carlos/MARVIN/install/marvin_description/share/marvin_description/rviz
+[1.496s] -- Installing: /home/carlos/MARVIN/install/marvin_description/share/marvin_description/rviz/description.rviz
+[1.496s] -- Installing: /home/carlos/MARVIN/install/marvin_description/share/marvin_description/meshes
+[1.496s] -- Installing: /home/carlos/MARVIN/install/marvin_description/share/marvin_description/meshes/camera_right.STL
+[1.496s] -- Installing: /home/carlos/MARVIN/install/marvin_description/share/marvin_description/meshes/front_wheel_left.STL
+[1.496s] -- Installing: /home/carlos/MARVIN/install/marvin_description/share/marvin_description/meshes/camera_left.STL
+[1.496s] -- Installing: /home/carlos/MARVIN/install/marvin_description/share/marvin_description/meshes/base_link.STL
+[1.497s] -- Installing: /home/carlos/MARVIN/install/marvin_description/share/marvin_description/meshes/depth_camera.STL
+[1.497s] -- Installing: /home/carlos/MARVIN/install/marvin_description/share/marvin_description/meshes/back_wheel_right.STL
+[1.497s] -- Installing: /home/carlos/MARVIN/install/marvin_description/share/marvin_description/meshes/lidar.STL
+[1.497s] -- Installing: /home/carlos/MARVIN/install/marvin_description/share/marvin_description/meshes/front_wheel_right.STL
+[1.497s] -- Installing: /home/carlos/MARVIN/install/marvin_description/share/marvin_description/meshes/back_wheel_left.STL
+[1.497s] -- Installing: /home/carlos/MARVIN/install/marvin_description/share/marvin_description/meshes/front_handle_left.STL
+[1.497s] -- Installing: /home/carlos/MARVIN/install/marvin_description/share/marvin_description/meshes/front_handle_right.STL
+[1.498s] -- Installing: /home/carlos/MARVIN/install/marvin_description/share/ament_index/resource_index/package_run_dependencies/marvin_description
+[1.498s] -- Installing: /home/carlos/MARVIN/install/marvin_description/share/ament_index/resource_index/parent_prefix_path/marvin_description
+[1.498s] -- Installing: /home/carlos/MARVIN/install/marvin_description/share/marvin_description/environment/ament_prefix_path.sh
+[1.498s] -- Installing: /home/carlos/MARVIN/install/marvin_description/share/marvin_description/environment/ament_prefix_path.dsv
+[1.498s] -- Installing: /home/carlos/MARVIN/install/marvin_description/share/marvin_description/environment/path.sh
+[1.498s] -- Installing: /home/carlos/MARVIN/install/marvin_description/share/marvin_description/environment/path.dsv
+[1.499s] -- Installing: /home/carlos/MARVIN/install/marvin_description/share/marvin_description/local_setup.bash
+[1.499s] -- Installing: /home/carlos/MARVIN/install/marvin_description/share/marvin_description/local_setup.sh
+[1.499s] -- Installing: /home/carlos/MARVIN/install/marvin_description/share/marvin_description/local_setup.zsh
+[1.499s] -- Installing: /home/carlos/MARVIN/install/marvin_description/share/marvin_description/local_setup.dsv
+[1.500s] -- Installing: /home/carlos/MARVIN/install/marvin_description/share/marvin_description/package.dsv
+[1.500s] -- Installing: /home/carlos/MARVIN/install/marvin_description/share/ament_index/resource_index/packages/marvin_description
+[1.500s] -- Installing: /home/carlos/MARVIN/install/marvin_description/share/marvin_description/cmake/marvin_descriptionConfig.cmake
+[1.500s] -- Installing: /home/carlos/MARVIN/install/marvin_description/share/marvin_description/cmake/marvin_descriptionConfig-version.cmake
+[1.500s] -- Installing: /home/carlos/MARVIN/install/marvin_description/share/marvin_description/package.xml
+[1.523s] Invoked command in '/home/carlos/MARVIN/build/marvin_description' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /home/carlos/MARVIN/build/marvin_description

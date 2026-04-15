@@ -1,0 +1,3 @@
+[console_scripts]
+scan_filter = marvincar_nav.scan_filter:main
+

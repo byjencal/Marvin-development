@@ -1,0 +1,43 @@
+[0.917s] Invoking command in '/home/carlos/MARVIN/marvin_real/src/marvincar_ctrl': PYTHONPATH=/home/carlos/MARVIN/build/marvincar_ctrl/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/carlos/MARVIN/install/marvincar_ctrl/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/marvincar_ctrl build --build-base /home/carlos/MARVIN/build/marvincar_ctrl/build install --record /home/carlos/MARVIN/build/marvincar_ctrl/install.log --install-scripts $base/lib/marvincar_ctrl --single-version-externally-managed install_data
+[1.166s] running egg_info
+[1.167s] creating ../../../build/marvincar_ctrl/marvincar_ctrl.egg-info
+[1.167s] writing ../../../build/marvincar_ctrl/marvincar_ctrl.egg-info/PKG-INFO
+[1.168s] writing dependency_links to ../../../build/marvincar_ctrl/marvincar_ctrl.egg-info/dependency_links.txt
+[1.168s] writing entry points to ../../../build/marvincar_ctrl/marvincar_ctrl.egg-info/entry_points.txt
+[1.168s] writing requirements to ../../../build/marvincar_ctrl/marvincar_ctrl.egg-info/requires.txt
+[1.168s] writing top-level names to ../../../build/marvincar_ctrl/marvincar_ctrl.egg-info/top_level.txt
+[1.169s] writing manifest file '../../../build/marvincar_ctrl/marvincar_ctrl.egg-info/SOURCES.txt'
+[1.210s] reading manifest file '../../../build/marvincar_ctrl/marvincar_ctrl.egg-info/SOURCES.txt'
+[1.211s] writing manifest file '../../../build/marvincar_ctrl/marvincar_ctrl.egg-info/SOURCES.txt'
+[1.211s] running build
+[1.211s] running build_py
+[1.212s] creating /home/carlos/MARVIN/build/marvincar_ctrl/build
+[1.212s] creating /home/carlos/MARVIN/build/marvincar_ctrl/build/lib
+[1.212s] creating /home/carlos/MARVIN/build/marvincar_ctrl/build/lib/marvincar_ctrl
+[1.212s] copying marvincar_ctrl/marvin_keyboard.py -> /home/carlos/MARVIN/build/marvincar_ctrl/build/lib/marvincar_ctrl
+[1.213s] copying marvincar_ctrl/__init__.py -> /home/carlos/MARVIN/build/marvincar_ctrl/build/lib/marvincar_ctrl
+[1.213s] copying marvincar_ctrl/marvin_joy.py -> /home/carlos/MARVIN/build/marvincar_ctrl/build/lib/marvincar_ctrl
+[1.213s] running install
+[1.215s] running install_lib
+[1.216s] creating /home/carlos/MARVIN/install/marvincar_ctrl/lib/python3.8/site-packages/marvincar_ctrl
+[1.216s] copying /home/carlos/MARVIN/build/marvincar_ctrl/build/lib/marvincar_ctrl/marvin_keyboard.py -> /home/carlos/MARVIN/install/marvincar_ctrl/lib/python3.8/site-packages/marvincar_ctrl
+[1.217s] copying /home/carlos/MARVIN/build/marvincar_ctrl/build/lib/marvincar_ctrl/__init__.py -> /home/carlos/MARVIN/install/marvincar_ctrl/lib/python3.8/site-packages/marvincar_ctrl
+[1.217s] copying /home/carlos/MARVIN/build/marvincar_ctrl/build/lib/marvincar_ctrl/marvin_joy.py -> /home/carlos/MARVIN/install/marvincar_ctrl/lib/python3.8/site-packages/marvincar_ctrl
+[1.218s] byte-compiling /home/carlos/MARVIN/install/marvincar_ctrl/lib/python3.8/site-packages/marvincar_ctrl/marvin_keyboard.py to marvin_keyboard.cpython-38.pyc
+[1.221s] byte-compiling /home/carlos/MARVIN/install/marvincar_ctrl/lib/python3.8/site-packages/marvincar_ctrl/__init__.py to __init__.cpython-38.pyc
+[1.221s] byte-compiling /home/carlos/MARVIN/install/marvincar_ctrl/lib/python3.8/site-packages/marvincar_ctrl/marvin_joy.py to marvin_joy.cpython-38.pyc
+[1.223s] running install_data
+[1.223s] creating /home/carlos/MARVIN/install/marvincar_ctrl/share/ament_index
+[1.223s] creating /home/carlos/MARVIN/install/marvincar_ctrl/share/ament_index/resource_index
+[1.224s] creating /home/carlos/MARVIN/install/marvincar_ctrl/share/ament_index/resource_index/packages
+[1.224s] copying resource/marvincar_ctrl -> /home/carlos/MARVIN/install/marvincar_ctrl/share/ament_index/resource_index/packages
+[1.224s] copying package.xml -> /home/carlos/MARVIN/install/marvincar_ctrl/share/marvincar_ctrl
+[1.224s] creating /home/carlos/MARVIN/install/marvincar_ctrl/share/marvincar_ctrl/launch
+[1.225s] copying launch/marvincar_joy_launch.py -> /home/carlos/MARVIN/install/marvincar_ctrl/share/marvincar_ctrl/launch
+[1.225s] running install_egg_info
+[1.227s] Copying ../../../build/marvincar_ctrl/marvincar_ctrl.egg-info to /home/carlos/MARVIN/install/marvincar_ctrl/lib/python3.8/site-packages/marvincar_ctrl-0.0.0-py3.8.egg-info
+[1.228s] running install_scripts
+[1.251s] Installing marvin_joy script to /home/carlos/MARVIN/install/marvincar_ctrl/lib/marvincar_ctrl
+[1.252s] Installing marvin_keyboard script to /home/carlos/MARVIN/install/marvincar_ctrl/lib/marvincar_ctrl
+[1.253s] writing list of installed files to '/home/carlos/MARVIN/build/marvincar_ctrl/install.log'
+[1.298s] Invoked command in '/home/carlos/MARVIN/marvin_real/src/marvincar_ctrl' returned '0': PYTHONPATH=/home/carlos/MARVIN/build/marvincar_ctrl/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/carlos/MARVIN/install/marvincar_ctrl/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../../build/marvincar_ctrl build --build-base /home/carlos/MARVIN/build/marvincar_ctrl/build install --record /home/carlos/MARVIN/build/marvincar_ctrl/install.log --install-scripts $base/lib/marvincar_ctrl --single-version-externally-managed install_data

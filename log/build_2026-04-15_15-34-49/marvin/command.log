@@ -1,0 +1,6 @@
+Invoking command in '/home/carlos/MARVIN/build/marvin': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake /home/carlos/MARVIN/marvin_sim/src/marvin -DCMAKE_INSTALL_PREFIX=/home/carlos/MARVIN/install/marvin
+Invoked command in '/home/carlos/MARVIN/build/marvin' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake /home/carlos/MARVIN/marvin_sim/src/marvin -DCMAKE_INSTALL_PREFIX=/home/carlos/MARVIN/install/marvin
+Invoking command in '/home/carlos/MARVIN/build/marvin': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/carlos/MARVIN/build/marvin -- -j8 -l8
+Invoked command in '/home/carlos/MARVIN/build/marvin' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /home/carlos/MARVIN/build/marvin -- -j8 -l8
+Invoking command in '/home/carlos/MARVIN/build/marvin': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /home/carlos/MARVIN/build/marvin
+Invoked command in '/home/carlos/MARVIN/build/marvin' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /home/carlos/MARVIN/build/marvin

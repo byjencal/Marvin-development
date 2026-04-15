@@ -1,0 +1,5 @@
+[console_scripts]
+laser_Avoidance = marvincar_laser.laser_Avoidance:main
+laser_Tracker = marvincar_laser.laser_Tracker:main
+laser_Warning = marvincar_laser.laser_Warning:main
+
