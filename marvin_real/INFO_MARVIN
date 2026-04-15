@@ -1,0 +1,170 @@
+PASOS PARA CORRER MARVIN FÍSICO
+================================
+
+INICIO RÁPIDO (2 TERMINALES - RECOMENDADO)
+==========================================
+
+1. TERMINAL 1 - EN EL ROBOT (DOCKER)
+------------------------------------
+ssh marvin@192.168.31.129
+
+# Primera vez o cuando necesites sincronizar
+sudo date -s "2026-04-13 16:01:00"
+
+# Entrar en docker (sin mando)
+sudo docker run -it --net=host --device=/dev/input/event0 --device=/dev/input/event1 --device=/dev/myserial --device=/dev/rplidar --env="DISPLAY" --env="QT_X11_NO_MITSHM=1" -v /tmp/.X11-unix:/tmp/.X11-unix marvin:latest /bin/bash
+
+# O con mando (agregar event2 y js0)
+sudo docker run -it --net=host --device=/dev/input/event0 --device=/dev/input/event1 --device=/dev/input/event2 --device=/dev/input/js0 --device=/dev/myserial --device=/dev/rplidar --env="DISPLAY" --env="QT_X11_NO_MITSHM=1" -v /tmp/.X11-unix:/tmp/.X11-unix marvin:latest /bin/bash
+
+# Dentro del contenedor
+colcon build
+source install/setup.bash
+export ROS_DOMAIN_ID=1
+
+# LANZAR TODOS LOS NODOS EN UNA SOLA TERMINAL
+ros2 launch marvincar_bringup full_system_launch.py
+
+# LISTO! Verás los logs de:
+# - Driver Ackman (bringup)
+# - LIDAR LD19
+# - SLAM Mapping
+
+
+2. TERMINAL 2 - EN LA LAPTOP
+-----------------------------
+cd MARVIN
+source install/setup.bash
+export ROS_DOMAIN_ID=1
+
+# Ver el mapa en RViz
+ros2 launch marvincar_nav full_viz_control_launch.py
+
+# EN OTRA TERMINAL (TERMINAL 3 OPCIONAL - para control)
+cd MARVIN
+source install/setup.bash
+export ROS_DOMAIN_ID=1
+ros2 run teleop_twist_keyboard teleop_twist_keyboard
+
+
+========================================
+MÉTODO ANTERIOR (5 TERMINALES - NO RECOMENDADO)
+========================================
+
+Ver archivo más abajo si lo necesitas...
+
+
+PASOS DETALLADOS (SI NECESITAS HACERLO PASO A PASO)
+===================================================
+
+1. CONECTARSE A MARVIN FÍSICO
+-----------------------------
+ssh marvin@192.168.31.129
+
+2. SINCRONIZAR HORA (si está desincronizada)
+----------------------------------------------
+sudo date -s "2026-04-13 16:01:00"
+
+3. EMPAREJAR MANDO BLUETOOTH (OPCIONAL - si usas mando)
+-------------------------------------------------------
+sudo bluetoothctl
+> power on
+> agent on
+> default-agent
+> pair [MAC_DEL_MANDO]
+> trust [MAC_DEL_MANDO]
+> connect [MAC_DEL_MANDO]
+
+4. DOCKER - ENTRAR EN CONTENEDOR
+--------------------------------
+CON MANDO:
+sudo docker run -it --net=host \
+  --device=/dev/input/event0 \
+  --device=/dev/input/event1 \
+  --device=/dev/input/event2 \
+  --device=/dev/input/js0 \
+  --device=/dev/myserial \
+  --device=/dev/rplidar \
+  --env="DISPLAY" \
+  --env="QT_X11_NO_MITSHM=1" \
+  -v /tmp/.X11-unix:/tmp/.X11-unix \
+  marvin:latest /bin/bash
+
+SIN MANDO:
+sudo docker run -it --net=host \
+  --device=/dev/input/event0 \
+  --device=/dev/input/event1 \
+  --device=/dev/myserial \
+  --device=/dev/rplidar \
+  --env="DISPLAY" \
+  --env="QT_X11_NO_MITSHM=1" \
+  -v /tmp/.X11-unix:/tmp/.X11-unix \
+  marvin:latest /bin/bash
+
+5. COMPILAR (PRIMERA VEZ O DESPUÉS DE CAMBIOS)
+-----------------------------------------------
+colcon build
+
+6. LANZAR NODOS (ELEGIR UNA OPCIÓN)
+------------------------------------
+
+OPCIÓN A - SIMPLIFICADO (RECOMENDADO - 1 TERMINAL)
+source install/setup.bash
+export ROS_DOMAIN_ID=1
+ros2 launch marvincar_bringup full_system_launch.py
+
+OPCIÓN B - DETALLADO (5 TERMINALES - NO RECOMENDADO)
+Abrir 3 terminales de Docker diferentes:
+
+Terminal Docker 1:
+source install/setup.bash
+export ROS_DOMAIN_ID=1
+ros2 launch marvincar_bringup marvincar_bringup_launch.py
+
+Terminal Docker 2:
+source install/setup.bash
+export ROS_DOMAIN_ID=1
+ros2 launch marvin_lidar ld19.launch.py
+
+Terminal Docker 3:
+source install/setup.bash
+export ROS_DOMAIN_ID=1
+ros2 launch marvincar_nav mapping_launch.py
+
+Terminal Laptop 1:
+cd MARVIN
+source install/setup.bash
+export ROS_DOMAIN_ID=1
+ros2 launch marvincar_nav view_map_launch.py
+
+Terminal Laptop 2:
+cd MARVIN
+source install/setup.bash
+export ROS_DOMAIN_ID=1
+ros2 run teleop_twist_keyboard teleop_twist_keyboard
+
+Controles del teleop_twist_keyboard:
+- u, i, o → Movimientos diagonales arriba
+- j, k, l → Movimientos diagonales abajo
+- w → Adelante
+- x → Atrás
+- a → Girar izquierda
+- d → Girar derecha
+- s → Parar
+- > → Aumentar velocidad
+- < → Disminuir velocidad
+- q → Salir
+
+
+CONEXIÓN EN RED
+===============
+IP Robot: 192.168.31.129
+Usuario: marvin
+ROS_DOMAIN_ID: 1 (importante para comunicación)
+
+
+TROUBLESHOOTING
+===============
+- Si no ve el mapa: Verifica que LIDAR esté publicando en /scan
+- Si el robot no se mueve: Verifica que Ackman driver esté corriendo
+- Si hay errores de conexión: Verifica ROS_DOMAIN_ID y conexión wifi
