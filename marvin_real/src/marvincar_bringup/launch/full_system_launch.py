@@ -4,6 +4,7 @@ Lanza todos los nodos del sistema MARVIN en una sola terminal:
 1. Driver Ackman (bringup)
 2. LIDAR LD19
 3. SLAM Toolbox (mapping)
+4. Cámaras CSI (camera_0 y camera_1)
 
 Uso: ros2 launch marvincar_bringup full_system_launch.py
 """
@@ -44,7 +45,7 @@ def generate_launch_description():
         )
     )
 
-    # 4. Launch Cameras (USB cam0 and cam1)
+    # 4. Launch Cameras (CSI cameras)
     camera_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(marvincar_camera_dir, 'launch', 'camera_launch.py')

@@ -2,17 +2,17 @@
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>marvincar_camera</name>
-  <version>0.0.1</version>
-  <description>Camera driver node for MARVIN robot - publishes USB camera streams</description>
-  <maintainer email="example@todo.todo">carlosalegrias</maintainer>
+  <version>0.0.0</version>
+  <description>Camera driver node for MARVIN robot - publishes CSI camera streams</description>
+  <maintainer email="carlosalegrias@example.com">carlosalegrias</maintainer>
   <license>Apache License 2.0</license>
 
-  <author email="example@todo.todo">Carlos</author>
+  <author email="carlosalegrias@example.com">Carlos</author>
 
   <buildtool_depend>ament_python</buildtool_depend>
+
   <depend>rclpy</depend>
   <depend>sensor_msgs</depend>
-  <depend>std_msgs</depend>
   <depend>cv_bridge</depend>
   <depend>python3-opencv</depend>
 
