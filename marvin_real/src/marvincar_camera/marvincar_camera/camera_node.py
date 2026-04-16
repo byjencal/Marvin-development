@@ -3,7 +3,7 @@
 
 """
 Camera node for MARVIN robot
-Captures video from CSI cameras using GStreamer and publishes as ROS2 Image messages
+Captures video from CSI cameras and publishes as ROS2 Image messages
 """
 
 import cv2
@@ -20,8 +20,8 @@ class CameraNode(Node):
         super().__init__(name)
 
         # Declare parameters
-        self.declare_parameter('camera_0_id', 0)
-        self.declare_parameter('camera_1_id', 1)
+        self.declare_parameter('camera_0_device', '/dev/video0')
+        self.declare_parameter('camera_1_device', '/dev/video1')
         self.declare_parameter('fps', 30)
         self.declare_parameter('width', 640)
         self.declare_parameter('height', 480)
@@ -29,47 +29,51 @@ class CameraNode(Node):
         self.declare_parameter('camera_1_frame_id', 'camera_1')
 
         # Get parameters
-        self.camera_0_id = self.get_parameter('camera_0_id').get_parameter_value().integer_value
-        self.camera_1_id = self.get_parameter('camera_1_id').get_parameter_value().integer_value
+        self.camera_0_device = self.get_parameter('camera_0_device').get_parameter_value().string_value
+        self.camera_1_device = self.get_parameter('camera_1_device').get_parameter_value().string_value
         self.fps = self.get_parameter('fps').get_parameter_value().integer_value
         self.width = self.get_parameter('width').get_parameter_value().integer_value
         self.height = self.get_parameter('height').get_parameter_value().integer_value
         self.camera_0_frame_id = self.get_parameter('camera_0_frame_id').get_parameter_value().string_value
         self.camera_1_frame_id = self.get_parameter('camera_1_frame_id').get_parameter_value().string_value
 
-        self.get_logger().info(f"Camera 0 ID: {self.camera_0_id}")
-        self.get_logger().info(f"Camera 1 ID: {self.camera_1_id}")
+        self.get_logger().info(f"Camera 0 device: {self.camera_0_device}")
+        self.get_logger().info(f"Camera 1 device: {self.camera_1_device}")
         self.get_logger().info(f"Resolution: {self.width}x{self.height}")
         self.get_logger().info(f"FPS: {self.fps}")
 
         # Initialize CvBridge
         self.bridge = CvBridge()
 
-        # Initialize OpenCV captures with GStreamer pipeline for Jetson CSI cameras
+        # Initialize OpenCV captures
         self.cap_0 = None
         self.cap_1 = None
 
-        # GStreamer pipeline for Jetson CSI camera
-        gst_pipeline_0 = self._create_gst_pipeline(self.camera_0_id)
-        gst_pipeline_1 = self._create_gst_pipeline(self.camera_1_id)
-
         # Try to open camera 0
         try:
-            self.cap_0 = cv2.VideoCapture(gst_pipeline_0, cv2.CAP_GSTREAMER)
+            self.cap_0 = cv2.VideoCapture(self.camera_0_device)
             if not self.cap_0.isOpened():
-                self.get_logger().warn(f"Failed to open camera 0 (ID: {self.camera_0_id})")
+                self.get_logger().warn(f"Failed to open camera: {self.camera_0_device}")
             else:
-                self.get_logger().info(f"Opened camera 0: {self.camera_0_id}")
+                self.get_logger().info(f"Opened camera 0: {self.camera_0_device}")
+                # Set resolution and FPS
+                self.cap_0.set(cv2.CAP_PROP_FRAME_WIDTH, self.width)
+                self.cap_0.set(cv2.CAP_PROP_FRAME_HEIGHT, self.height)
+                self.cap_0.set(cv2.CAP_PROP_FPS, self.fps)
         except Exception as e:
             self.get_logger().error(f"Error opening camera 0: {e}")
 
         # Try to open camera 1
         try:
-            self.cap_1 = cv2.VideoCapture(gst_pipeline_1, cv2.CAP_GSTREAMER)
+            self.cap_1 = cv2.VideoCapture(self.camera_1_device)
             if not self.cap_1.isOpened():
-                self.get_logger().warn(f"Failed to open camera 1 (ID: {self.camera_1_id})")
+                self.get_logger().warn(f"Failed to open camera: {self.camera_1_device}")
             else:
-                self.get_logger().info(f"Opened camera 1: {self.camera_1_id}")
+                self.get_logger().info(f"Opened camera 1: {self.camera_1_device}")
+                # Set resolution and FPS
+                self.cap_1.set(cv2.CAP_PROP_FRAME_WIDTH, self.width)
+                self.cap_1.set(cv2.CAP_PROP_FRAME_HEIGHT, self.height)
+                self.cap_1.set(cv2.CAP_PROP_FPS, self.fps)
         except Exception as e:
             self.get_logger().error(f"Error opening camera 1: {e}")
 
@@ -80,16 +84,6 @@ class CameraNode(Node):
         # Create timer for publishing
         timer_period = 1.0 / self.fps
         self.timer = self.create_timer(timer_period, self.publish_frames)
-
-    def _create_gst_pipeline(self, camera_id):
-        """Create GStreamer pipeline for Jetson CSI camera"""
-        return (
-            f"nvarguscamerasrc sensor-id={camera_id} ! "
-            f"video/x-raw(memory:NVMM), width={self.width}, height={self.height}, "
-            f"format=NV12, framerate={self.fps}/1 ! "
-            f"nvvidconv ! video/x-raw, format=BGRx ! "
-            f"videoconvert ! video/x-raw, format=BGR ! appsink"
-        )
 
     def publish_frames(self):
         """Capture and publish frames from both cameras"""
@@ -136,4 +130,3 @@ def main():
     rclpy.spin(camera_node)
     camera_node.destroy_node()
     rclpy.shutdown()
-
