@@ -9,7 +9,11 @@ RUN apt-get update
 # Install system-level camera and video dependencies
 RUN apt-get install -y \
     libv4l-dev \
-    v4l-utils
+    v4l-utils \
+    libgstreamer1.0-0 \
+    gstreamer1.0-plugins-base \
+    gstreamer1.0-plugins-good \
+    gstreamer1.0-plugins-bad
 
 # Install Python dependencies for camera support
 RUN pip3 install --upgrade pip && \
