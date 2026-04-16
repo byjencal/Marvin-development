@@ -13,6 +13,7 @@
 # limitations under the License.
 
 from setuptools import find_packages, setup
+import os
 
 package_name = 'marvincar_camera'
 
@@ -24,9 +25,9 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
-        ('share/' + package_name + '/launch', ['launch/camera_launch.py']),
+        (os.path.join('share', package_name, 'launch'), ['launch/camera_launch.py']),
     ],
-    install_requires=['setuptools'],
+    install_requires=['setuptools', 'opencv-python'],
     zip_safe=True,
     maintainer='carlosalegrias',
     maintainer_email='example@todo.todo',

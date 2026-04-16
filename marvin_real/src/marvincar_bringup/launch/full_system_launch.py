@@ -21,7 +21,7 @@ def generate_launch_description():
     marvincar_bringup_dir = get_package_share_directory('marvincar_bringup')
     marvin_lidar_dir = get_package_share_directory('marvin_lidar')
     marvincar_nav_dir = get_package_share_directory('marvincar_nav')
-    # marvincar_camera_dir = get_package_share_directory('marvincar_camera')
+    marvincar_camera_dir = get_package_share_directory('marvincar_camera')
 
     # 1. Launch Bringup (Driver Ackman)
     bringup_launch = IncludeLaunchDescription(
@@ -44,16 +44,16 @@ def generate_launch_description():
         )
     )
 
-    # 4. Launch Cameras (USB cam0 and cam1) - TODO: Fix marvincar_camera package setup
-    # camera_launch = IncludeLaunchDescription(
-    #     PythonLaunchDescriptionSource(
-    #         os.path.join(marvincar_camera_dir, 'launch', 'camera_launch.py')
-    #     )
-    # )
+    # 4. Launch Cameras (USB cam0 and cam1)
+    camera_launch = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(marvincar_camera_dir, 'launch', 'camera_launch.py')
+        )
+    )
 
     return LaunchDescription([
         bringup_launch,
         lidar_launch,
         mapping_launch,
-        # camera_launch,
+        camera_launch,
     ])
