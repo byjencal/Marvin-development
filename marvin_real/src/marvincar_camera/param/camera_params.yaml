@@ -1,8 +1,11 @@
 /**:
   ros__parameters:
     camera_node:
-      camera_0_device: /dev/video0
-      camera_1_device: /dev/video1
+      camera_0_id: 0
+      camera_1_id: 1
       fps: 30
+      width: 640
+      height: 480
       camera_0_frame_id: camera_0
       camera_1_frame_id: camera_1
+
