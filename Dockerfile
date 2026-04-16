@@ -9,9 +9,7 @@ RUN apt-get update
 # Install system-level camera and video dependencies
 RUN apt-get install -y \
     libv4l-dev \
-    v4l-utils \
-    ros-foxy-cv-bridge \
-    ros-foxy-sensor-msgs
+    v4l-utils
 
 # Install Python dependencies for camera support
 RUN pip3 install --upgrade pip && \
