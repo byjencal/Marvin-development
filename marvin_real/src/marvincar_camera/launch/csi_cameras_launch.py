@@ -48,6 +48,7 @@ def generate_launch_description():
         ],
         output='screen',
         emulate_tty=True,
+        prefix=['python3 -u'],
     )
 
     # Nodo para la cámara 1 (sensor-id=1)
@@ -66,6 +67,7 @@ def generate_launch_description():
         ],
         output='screen',
         emulate_tty=True,
+        prefix=['python3 -u'],
     )
 
     return LaunchDescription([
