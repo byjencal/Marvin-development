@@ -1,33 +1,33 @@
 # marvincar_camera
 
-Nodos ROS2 para publicar imágenes capturadas de ambas cámaras CSI (IMX219).
+Paquete ROS2 para controlar dos cámaras CSI IMX219 en Jetson Nano.
 
 ## Descripción
 
-Este paquete contiene dos nodos independientes que capturan video de las cámaras IMX219 conectadas a los puertos CSI0 y CSI1 de la Jetson:
+Este paquete proporciona un nodo parametrizable para capturar imágenes de cámaras CSI y publicarlas como mensajes ROS2 `sensor_msgs/Image`. Está optimizado para Jetson Nano usando la canalización de GStreamer con `nvarguscamerasrc`.
 
-- `camera_csi0_node`: Publica imágenes de CSI0 en `/marvin/camera/csi0/image_raw`
-- `camera_csi1_node`: Publica imágenes de CSI1 en `/marvin/camera/csi1/image_raw`
+## Hardware
 
-Ambos nodos usan:
-- GStreamer con `nvarguscamerasrc` para hardware acceleration de Jetson
-- OpenCV como interfaz para captura
-- `cv_bridge` para convertir imágenes a formato ROS2 (sensor_msgs/Image)
+- **Jetson Nano Developer Kit**
+- **Dos cámaras IMX219 CSI** (conectadas a los puertos CSI)
+- **Ubuntu 18.04/20.04 con ROS2 Foxy**
 
-## Requisitos
+## Características
 
-- ROS2 (instalado en Jetson)
-- OpenCV con soporte GStreamer
-- CUDA/cuDNN (típicamente pre-instalado en Jetson)
-- cv_bridge
-- Cámaras IMX219 conectadas a CSI0 y CSI1
+- ✅ Soporte para múltiples cámaras (sensor_id 0 y 1)
+- ✅ Parámetros configurables (resolución, framerate, sensor_mode)
+- ✅ Publicación en tópicos ROS2 estándar
+- ✅ Compatible con RViz para visualización
+- ✅ GStreamer pipeline optimizado para Jetson Nano
 
-## Compilación
+## Instalación
+
+Coloca este paquete en el directorio `src/` de tu workspace ROS2:
 
 ```bash
-# En el workspace MARVIN
 cd ~/MARVIN/marvin_real
-colcon build --packages-select marvincar_camera
+colcon build
+source install/setup.bash
 ```
 
 ## Uso
@@ -35,69 +35,71 @@ colcon build --packages-select marvincar_camera
 ### Lanzar ambas cámaras
 
 ```bash
-source ~/MARVIN/marvin_real/install/setup.bash
-export ROS_DOMAIN_ID=1
-ros2 launch marvincar_camera camera.launch.py
+ros2 launch marvincar_camera csi_cameras_launch.py
 ```
 
-### Lanzar solo una cámara
+### Lanzar con parámetros personalizados
 
 ```bash
-# CSI0
-ros2 run marvincar_camera camera_csi0
-
-# CSI1
-ros2 run marvincar_camera camera_csi1
+ros2 launch marvincar_camera csi_cameras_launch.py \
+  capture_width:=1280 \
+  capture_height:=720 \
+  framerate:=30
 ```
 
-## Visualización
-
-### Con RViz
+### Ejecución manual de un nodo
 
 ```bash
-# En otra terminal
-ros2 rviz2
-# Agregar un Image display
-# Topic: /marvin/camera/csi0/image_raw o /marvin/camera/csi1/image_raw
+ros2 run marvincar_camera csi_camera_node --ros-args \
+  -p sensor_id:=0 \
+  -p capture_width:=1920 \
+  -p capture_height:=1080 \
+  -p framerate:=20
 ```
 
-### Con `image_view`
+## Tópicos Publicados
 
-```bash
-# CSI0
-ros2 run image_common image_view image:=/marvin/camera/csi0/image_raw
-
-# CSI1
-ros2 run image_common image_view image:=/marvin/camera/csi1/image_raw
-```
-
-## Tópicos publicados
-
-- `/marvin/camera/csi0/image_raw` - Imágenes de CSI0 (sensor_msgs/Image)
-- `/marvin/camera/csi1/image_raw` - Imágenes de CSI1 (sensor_msgs/Image)
+- `/camera_0/image_raw` - Imágenes de la cámara 0 (tipo: `sensor_msgs/Image`)
+- `/camera_1/image_raw` - Imágenes de la cámara 1 (tipo: `sensor_msgs/Image`)
 
 ## Parámetros
 
-Actualmente sin parámetros configurables. Para cambiar resolución, framerate o propiedades del pipeline, editar:
-- `camera_csi0_node.py` línea con `self.gst_pipeline`
-- `camera_csi1_node.py` línea con `self.gst_pipeline`
+| Parámetro | Tipo | Valor por defecto | Descripción |
+|-----------|------|------------------|-------------|
+| `sensor_id` | int | 0 | ID del sensor CSI (0 o 1) |
+| `sensor_mode` | int | 0 | Modo del sensor |
+| `capture_width` | int | 1920 | Ancho de captura en píxeles |
+| `capture_height` | int | 1080 | Alto de captura en píxeles |
+| `framerate` | int | 20 | Framerate en Hz |
 
-Ejemplo para cambiar a 30 FPS y 1280x720:
-```python
-self.gst_pipeline = (
-    'nvarguscamerasrc sensor-id=0 ! '
-    'video/x-raw(memory:NVMM),width=1280,height=720,framerate=30/1 ! '
-    ...
-)
+## Visualización en RViz
+
+1. Abre RViz: `rviz2`
+2. Agrega un plugin **Image** a través de **Panels → Add new panel → Image**
+3. Configura el tópico en el panel Image:
+   - `/camera_0/image_raw` para la cámara izquierda
+   - `/camera_1/image_raw` para la cámara derecha
+
+## Estructura del Paquete
+
+```
+marvincar_camera/
+├── marvincar_camera/
+│   ├── __init__.py
+│   └── csi_camera_node.py        # Nodo principal
+├── launch/
+│   └── csi_cameras_launch.py     # Launch file para ambas cámaras
+├── package.xml
+├── setup.py
+└── README.md
 ```
 
-## Troubleshooting
+## Notas
 
-### "Failed to open CSI camera"
-- Verificar que las cámaras estén conectadas
-- Probar primero con `nvgstcapture-1.0` para verificar funcionamiento
+- Las cámaras deben estar correctamente conectadas a los puertos CSI del Jetson Nano
+- GStreamer y `opencv-python` deben estar instalados en el Docker
+- El nodo utiliza `sensor_id=0` y `sensor_id=1` para diferenciar las cámaras
 
-### No hay imágenes publicadas
-- Verificar que ROS2 esté corriendo: `ros2 topic list`
-- Ver logs: `ros2 topic echo /marvin/camera/csi0/image_raw`
-- Aumentar output en launch file si está con `output='screen'`
+## Autor
+
+MARVIN Team - Proyecto de Robótica Autónoma
