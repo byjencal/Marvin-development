@@ -1,8 +1,6 @@
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, ExecuteProcess
 from launch.substitutions import LaunchConfiguration
-from ament_index_python.packages import get_package_share_directory
-import os
 
 def generate_launch_description():
     """
@@ -14,9 +12,8 @@ def generate_launch_description():
     Visible en RViz agregando dos complementos Image con estos tópicos.
     """
     
-    # Obtener el directorio del paquete
-    pkg_dir = get_package_share_directory('marvincar_camera')
-    script_path = os.path.join(pkg_dir, '../marvincar_camera/marvincar_camera/csi_camera_node.py')
+    # Ruta absoluta al script
+    script_path = '/root/marvin/marvin_real/src/marvincar_camera/marvincar_camera/csi_camera_node.py'
     
     # Argumentos declarativos para configuración
     capture_width_arg = DeclareLaunchArgument(
@@ -39,7 +36,7 @@ def generate_launch_description():
 
     # Nodo para la cámara 0 (sensor-id=0)
     camera_0_node = ExecuteProcess(
-        cmd=['python3', '-u', script_path],
+        cmd=['python3', '-u', script_path, '--ros-args', '-p', 'sensor_id:=0'],
         name='camera_0_node',
         output='screen',
         emulate_tty=True,
@@ -48,7 +45,7 @@ def generate_launch_description():
 
     # Nodo para la cámara 1 (sensor-id=1)
     camera_1_node = ExecuteProcess(
-        cmd=['python3', '-u', script_path],
+        cmd=['python3', '-u', script_path, '--ros-args', '-p', 'sensor_id:=1'],
         name='camera_1_node',
         output='screen',
         emulate_tty=True,
