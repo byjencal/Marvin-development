@@ -122,7 +122,7 @@ fi
 
 # env
 alias python=python3
-export ROS_DOMAIN_ID=12
+export ROS_DOMAIN_ID=1
 
 export ROBOT_TYPE=r2   # r2, x1, x3
 export RPLIDAR_TYPE=a1  # a1, s2
@@ -134,11 +134,15 @@ echo "--------------------------------------------------------"
 
 #colcon_cd
 source /usr/share/colcon_cd/function/colcon_cd.sh
-export _colcon_cd_root=/root/marvin/marvin_ws
+export _colcon_cd_root=/root/marvin/marvin_real
 source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash
 
 #ros2
 source /opt/ros/foxy/setup.bash
-source /root/marvin/marvin_ws/install/setup.bash
-source /root/yahboomcar_ros2_ws/software/library_ws/install/setup.bash
+if [ -f /root/marvin/marvin_real/install/setup.bash ]; then
+    source /root/marvin/marvin_real/install/setup.bash
+fi
+if [ -f /root/yahboomcar_ros2_ws/software/library_ws/install/setup.bash ]; then
+    source /root/yahboomcar_ros2_ws/software/library_ws/install/setup.bash
+fi
 
