@@ -66,10 +66,20 @@ class CSICameraNode(Node):
         )
         self.get_logger().info(f"GStreamer pipeline: {pipeline}")
 
-        self.cap = cv2.VideoCapture(pipeline, cv2.CAP_GSTREAMER)
+        try:
+            self.cap = cv2.VideoCapture(pipeline, cv2.CAP_GSTREAMER)
+        except Exception as e:
+            self.get_logger().error(f"Exception creating VideoCapture: {str(e)}")
+            return
 
         if not self.cap.isOpened():
-            self.get_logger().error(f"Error: Unable to open camera with sensor ID {self.sensor_id}")
+            self.get_logger().error(
+                f"Error: Unable to open camera with sensor ID {self.sensor_id}\n"
+                f"  - Verify cámaras CSI are physically connected to Jetson Nano\n"
+                f"  - Check: ls -la /dev/video*\n"
+                f"  - Test: gst-launch-1.0 -v nvarguscamerasrc sensor-id={self.sensor_id} ! fakesink\n"
+                f"  - Verify: dmesg | grep -i camera"
+            )
             return
 
         self.get_logger().info(f"Camera {self.sensor_id} opened successfully")
