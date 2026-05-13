@@ -13,14 +13,13 @@ RUN find . -type f -exec touch {} +
 RUN rm -rf build install log || true
 
 # Instalar GStreamer para soporte de cámaras CSI/nvarguscamerasrc
+# Nota: nvidia-jetson-multimedia-api y libargus-dev ya vienen en la imagen base
 RUN apt-get update && \
     apt-get install -y \
     gstreamer1.0-tools \
     gstreamer1.0-plugins-base \
     gstreamer1.0-plugins-good \
-    libgstreamer1.0-0 \
-    nvidia-jetson-multimedia-api \
-    libargus-dev && \
+    libgstreamer1.0-0 && \
     rm -rf /var/lib/apt/lists/*
 
 CMD ["/bin/bash"]
