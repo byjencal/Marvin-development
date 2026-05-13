@@ -18,7 +18,9 @@ RUN apt-get update && \
     gstreamer1.0-tools \
     gstreamer1.0-plugins-base \
     gstreamer1.0-plugins-good \
-    libgstreamer1.0-0 && \
+    libgstreamer1.0-0 \
+    nvidia-jetson-multimedia-api \
+    libargus-dev && \
     rm -rf /var/lib/apt/lists/*
 
 CMD ["/bin/bash"]
