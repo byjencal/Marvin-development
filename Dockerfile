@@ -6,7 +6,7 @@ COPY . .
 
 COPY ./configurations/.bashrc /root/.bashrc
 
-WORKDIR /root/marvin/marvin_real
+WORKDIR /root/marvin/marvin_ws
 
 RUN find . -type f -exec touch {} +
 
