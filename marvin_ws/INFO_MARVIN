@@ -40,7 +40,13 @@ sudo docker run -it --net=host \
   --env="QT_X11_NO_MITSHM=1" \
   -v /tmp/.X11-unix:/tmp/.X11-unix \
   marvin:latest /bin/bash
-
+  
+sudo docker run -it \
+  --runtime nvidia \
+  -v /tmp/argus_socket:/tmp/argus_socket \
+  --device /dev/video0 \
+  --device /dev/video1 \
+  marvin_image_name
 
 Ejecutar código de ROS2 de Marvin------------------------------------
 colcon build
@@ -65,6 +71,8 @@ ros2 launch marvincar_nav mapping_launch.py
 
 source install/setup.bash
 export ROS_DOMAIN_ID=1
+ros2 run marvincar_vision stereo_node
+ros2 topic list
 // eliminado: ros2 launch marvincar_camera csi_cameras_launch.py
 En la laptop---------------------------------------------------------
 
