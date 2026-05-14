@@ -2,7 +2,7 @@ Inicializar la Jetson de Marvin-------------------------------------
 ssh marvin@192.168.31.128
 
 Emparejar la hora:
-sudo date -s "2026-04-28 13:13:00"
+sudo date -s "2026-05-13 13:53:40"
 
 Emparejar palanca:
 sudo bluetoothctl
@@ -16,15 +16,30 @@ connect [MAC]
 Actualizar Código de Marvin (Afuera del docker)---------------------
 cd marvin
 git pull origin main
-Actualizar dockerfile(Si hay cambios):
+# Actualizar dockerfile(Si hay cambios):
 cd /marvin
+# Eliminar imagen antigua
+sudo docker rmi marvin:latest -f
+# Reconstruir Docker (puede tomar 5-10 minutos)
 sudo docker build . -t marvin:latest
 
 Iniciar Docker------------------------------------------------------
-Con mando conectado:
+# Con mando conectado:
 sudo docker run -it --net=host --device=/dev/input/event0 --device=/dev/input/event1 --device=/dev/input/event2 --device=/dev/input/js0 --device=/dev/myserial --device=/dev/rplidar --env="DISPLAY" --env="QT_X11_NO_MITSHM=1" -v /tmp/.X11-unix:/tmp/.X11-unix marvin:latest /bin/bash
-Sin mando conectado:
+# Sin mando conectado:
 sudo docker run -it --net=host --device=/dev/input/event0 --device=/dev/input/event1 --device=/dev/myserial --device=/dev/rplidar --env="DISPLAY" --env="QT_X11_NO_MITSHM=1" -v /tmp/.X11-unix:/tmp/.X11-unix marvin:latest /bin/bash
+Con camaras
+sudo docker run -it --net=host \
+  --device=/dev/input/event0 \
+  --device=/dev/input/event1 \
+  --device=/dev/myserial \
+  --device=/dev/rplidar \
+  --device=/dev/video0 \
+  --device=/dev/video1 \
+  --env="DISPLAY" \
+  --env="QT_X11_NO_MITSHM=1" \
+  -v /tmp/.X11-unix:/tmp/.X11-unix \
+  marvin:latest /bin/bash
 
 
 Ejecutar código de ROS2 de Marvin------------------------------------
@@ -48,6 +63,9 @@ source install/setup.bash
 export ROS_DOMAIN_ID=1
 ros2 launch marvincar_nav mapping_launch.py  
 
+source install/setup.bash
+export ROS_DOMAIN_ID=1
+// eliminado: ros2 launch marvincar_camera csi_cameras_launch.py
 En la laptop---------------------------------------------------------
 
 cd MARVIN
