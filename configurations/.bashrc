@@ -134,13 +134,13 @@ echo "--------------------------------------------------------"
 
 #colcon_cd
 source /usr/share/colcon_cd/function/colcon_cd.sh
-export _colcon_cd_root=/root/marvin/marvin_real
+export _colcon_cd_root=/root/marvin/marvin_ws
 source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash
 
 #ros2
 source /opt/ros/foxy/setup.bash
-if [ -f /root/marvin/marvin_real/install/setup.bash ]; then
-    source /root/marvin/marvin_real/install/setup.bash
+if [ -f /root/marvin/marvin_ws/install/setup.bash ]; then
+    source /root/marvin/marvin_ws/install/setup.bash
 fi
 if [ -f /root/yahboomcar_ros2_ws/software/library_ws/install/setup.bash ]; then
     source /root/yahboomcar_ros2_ws/software/library_ws/install/setup.bash
