@@ -2,7 +2,7 @@ Inicializar la Jetson de Marvin-------------------------------------
 ssh marvin@192.168.31.128
 
 Emparejar la hora:
-sudo date -s "2026-05-13 13:53:40"
+sudo date -s "2026-05-18 10:01:40"
 
 Emparejar palanca:
 sudo bluetoothctl
@@ -36,9 +36,8 @@ sudo docker run -it --net=host \
   --device=/dev/rplidar \
   --device=/dev/video0 \
   --device=/dev/video1 \
-  --env="DISPLAY" \
-  --env="QT_X11_NO_MITSHM=1" \
-  -v /tmp/.X11-unix:/tmp/.X11-unix \
+  --runtime nvidia \
+  -v /tmp/argus_socket:/tmp/argus_socket \
   marvin:latest /bin/bash
   
 sudo docker run -it \
@@ -46,6 +45,8 @@ sudo docker run -it \
   -v /tmp/argus_socket:/tmp/argus_socket \
   --device /dev/video0 \
   --device /dev/video1 \
+    --env="QT_X11_NO_MITSHM=1" \
+  -v /tmp/.X11-unix:/tmp/.X11-unix \
   marvin_image_name
 
 Ejecutar código de ROS2 de Marvin------------------------------------
