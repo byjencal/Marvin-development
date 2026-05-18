@@ -1,7 +1,10 @@
 FROM yahboomtechnology/ros-foxy:3.5.3
 
-# 1. Instalar dependencias del sistema (GStreamer y OpenCV)
-# Usamos un solo RUN y limpiamos la caché al final para que la imagen no pese gigabytes extra
+# 1. Renovar la llave de seguridad (GPG) de ROS 2 que expiró
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys F42ED6FBAB17C654 || \
+    (apt-get update || true && apt-get install -y curl && curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.key | apt-key add -)
+
+# 2. Instalar dependencias del sistema (GStreamer y OpenCV)
 RUN apt-get update && apt-get install -y \
     gstreamer1.0-tools \
     gstreamer1.0-plugins-base \
@@ -17,19 +20,16 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /root/marvin
 
-# 2. Copiar el código fuente
+# 3. Copiar el código fuente
 COPY . .
 
-# 3. Copiar configuraciones del entorno
+# 4. Copiar configuraciones del entorno
 COPY ./configurations/.bashrc /root/.bashrc
 
 WORKDIR /root/marvin/marvin_ws
 
-# 4. Sincronizar relojes y limpiar builds antiguos del host
+# 5. Sincronizar relojes y limpiar builds antiguos del host
 RUN find . -type f -exec touch {} +
 RUN rm -rf build install log || true
-
-# (Opcional) 5. Compilar el workspace automáticamente al crear la imagen
-# RUN /bin/bash -c "source /opt/ros/foxy/setup.bash && colcon build"
 
 CMD ["/bin/bash"]
