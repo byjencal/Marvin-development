@@ -1,9 +1,11 @@
 # Usamos la imagen oficial de NVIDIA para Jetson con Foxy preinstalado
 FROM dustynv/ros:foxy-ros-base-l4t-r32.7.1
 
-# 1. Renovar la llave de seguridad (GPG) de ROS 2 que expiró
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys F42ED6FBAB17C654 || \
-    (apt-get update || true && apt-get install -y curl && curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.key | apt-key add -)
+# 1. Eliminar la llave caducada de ROS y descargar la oficial actualizada
+RUN apt-key del F42ED6FBAB17C654 || true && \
+    (apt-get update || true) && \
+    apt-get install -y curl && \
+    curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | apt-key add -
 
 # 2. Instalar OpenCV y el puente de ROS 2
 RUN apt-get update && apt-get install -y \
