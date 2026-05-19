@@ -40,15 +40,14 @@ sudo docker run -it --net=host \
   -v /tmp/argus_socket:/tmp/argus_socket \
   marvin:latest /bin/bash
   
-sudo docker run -it \
+sudo docker run -it --net=host \
+  --privileged \
+  --env="ROS_DOMAIN_ID=1" \
+  --env="NVIDIA_DRIVER_CAPABILITIES=all" \
   --runtime nvidia \
   -v /tmp/argus_socket:/tmp/argus_socket \
-  --device /dev/video0 \
-  --device /dev/video1 \
-    --env="QT_X11_NO_MITSHM=1" \
-  -v /tmp/.X11-unix:/tmp/.X11-unix \
-  marvin_image_name
-
+  marvin:latest /bin/bash
+  
 Ejecutar código de ROS2 de Marvin------------------------------------
 colcon build
 Abrir otra terminal docker:

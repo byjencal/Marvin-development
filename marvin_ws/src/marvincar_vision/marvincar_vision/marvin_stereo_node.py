@@ -26,9 +26,9 @@ class MarvinStereoCamera(Node):
         self.cap_right = cv2.VideoCapture(pipe_right, cv2.CAP_GSTREAMER)
     
     def gstreamer_pipeline(self, sensor_id, width=1280, height=720, framerate=60):
-        # Solicitamos 60fps (modo nativo) y forzamos a botar frames viejos (drop=true max-buffers=1)
+        # ¡Añadimos sensor-mode=4 para obligar a la Jetson a usar el modo de 60fps!
         return (
-            f"nvarguscamerasrc sensor-id={sensor_id} ! "
+            f"nvarguscamerasrc sensor-id={sensor_id} sensor-mode=4 ! "
             f"video/x-raw(memory:NVMM), width={width}, height={height}, format=(string)NV12, framerate=(fraction){framerate}/1 ! "
             f"nvvidconv ! video/x-raw, format=(string)BGRx ! "
             f"videoconvert ! video/x-raw, format=(string)BGR ! "
