@@ -24,14 +24,15 @@ class MarvinStereoCamera(Node):
         self.get_logger().info('Inicializando cámaras IMX219...')
         self.cap_left = cv2.VideoCapture(pipe_left, cv2.CAP_GSTREAMER)
         self.cap_right = cv2.VideoCapture(pipe_right, cv2.CAP_GSTREAMER)
-
-    def gstreamer_pipeline(self, sensor_id, width=1280, height=720, framerate=30):
-        # Este es el pipeline mágico que usa el ISP de la Jetson
+    
+    def gstreamer_pipeline(self, sensor_id, width=1280, height=720, framerate=60):
+        # Solicitamos 60fps (modo nativo) y forzamos a botar frames viejos (drop=true max-buffers=1)
         return (
             f"nvarguscamerasrc sensor-id={sensor_id} ! "
             f"video/x-raw(memory:NVMM), width={width}, height={height}, format=(string)NV12, framerate=(fraction){framerate}/1 ! "
             f"nvvidconv ! video/x-raw, format=(string)BGRx ! "
-            f"videoconvert ! video/x-raw, format=(string)BGR ! appsink"
+            f"videoconvert ! video/x-raw, format=(string)BGR ! "
+            f"appsink drop=true max-buffers=1"
         )
 
     def timer_callback(self):
