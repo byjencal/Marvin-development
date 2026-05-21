@@ -20,7 +20,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
     'console_scripts': [
-        'stereo_node = marvincar_vision.marvin_stereo_node:main'
+        'stereo_node = marvincar_vision.marvin_stereo_node:main',
+        'oakd_node = marvincar_vision.oakd_node:main'
     ],
 },
 )

@@ -23,7 +23,6 @@ RUN apt-get update && apt-get install -y \
 
 RUN pip3 install depthai
 
-
 WORKDIR /root/marvin
 
 # 4. Copiar tu código
