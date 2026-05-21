@@ -18,7 +18,11 @@ RUN apt-get update && apt-get install -y \
     cuda-toolkit-10-2 \
     python3-opencv \
     git \
+    python3-pip \
     && rm -rf /var/lib/apt/lists/*
+
+RUN pip3 install depthai
+
 
 WORKDIR /root/marvin
 
