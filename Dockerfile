@@ -19,6 +19,7 @@ RUN apt-get update && apt-get install -y \
     python3-opencv \
     git \
     python3-pip \
+    ros-foxy-xacro \
     && rm -rf /var/lib/apt/lists/*
 
 RUN pip3 install depthai

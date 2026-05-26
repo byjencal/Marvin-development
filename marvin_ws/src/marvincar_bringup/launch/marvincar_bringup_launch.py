@@ -82,16 +82,6 @@ def generate_launch_description():
             '/ekf_x1_x3_launch.py'])
     )
 
-    marvin_joy_node = Node(
-        package='marvincar_ctrl',
-        executable='marvin_joy',
-    )
-
-    joy_node = Node(
-        package='joy',
-        executable='joy_node'
-    )
-
     return LaunchDescription([
         gui_arg,
         model_arg,
@@ -105,6 +95,4 @@ def generate_launch_description():
         base_node,
         imu_filter_node,
         ekf_node,
-        joy_node,
-        marvin_joy_node,
     ])
