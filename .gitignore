@@ -1,1 +1,11 @@
 .vscode/
+
+# ROS 2 / colcon build artifacts
+build/
+install/
+log/
+
+# Workspace-specific artifacts
+marvin_ws/build/
+marvin_ws/install/
+marvin_ws/log/
