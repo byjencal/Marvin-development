@@ -19,7 +19,6 @@ RUN apt-get update && apt-get install -y \
     python3-opencv \
     git \
     python3-pip \
-    ros-foxy-xacro \
     && rm -rf /var/lib/apt/lists/*
 
 RUN pip3 install depthai
@@ -34,6 +33,7 @@ WORKDIR /root/marvin/marvin_ws
 
 # 5. Descargar el código fuente de cv_bridge oficial
 RUN git clone -b foxy https://github.com/ros-perception/vision_opencv.git src/vision_opencv
+RUN git clone -b ros2 https://github.com/ros/xacro.git src/xacro
 
 # 6. Sincronizar relojes
 RUN find . -type f -exec touch {} +
