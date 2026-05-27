@@ -1,15 +1,13 @@
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
 from launch.conditions import IfCondition, UnlessCondition
-from launch.substitutions import LaunchConfiguration
+from launch.substitutions import LaunchConfiguration, Command
 from launch_ros.actions import Node
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from ament_index_python.packages import get_package_share_path, get_package_share_directory
-import xacro
 import os
 
 print("---------------------INICIANDO M.A.R.V.I.N---------------------")
-
 
 def generate_launch_description():
     urdf_tutorial_path = get_package_share_path('marvincar_description')
@@ -25,12 +23,12 @@ def generate_launch_description():
     pub_odom_tf_arg = DeclareLaunchArgument('pub_odom_tf', default_value='false',
                                             description='Whether to publish the tf from the original odom to the base_footprint')
 
-    robot_description = xacro.process_file(default_model_path)
-
+    # EL GRAN CAMBIO ESTÁ AQUÍ:
+    # En lugar de usar la librería de Python, usamos Command para ejecutar xacro
     robot_state_publisher_node = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
-        parameters=[{'robot_description': robot_description.toxml()}]
+        parameters=[{'robot_description': Command(['xacro ', LaunchConfiguration('model')])}]
     )
 
     # Depending on gui parameter, either launch joint_state_publisher or joint_state_publisher_gui
@@ -68,6 +66,7 @@ def generate_launch_description():
         executable='imu_filter_madgwick_node',
         parameters=[imu_filter_config]
     )
+    
     rviz_node = Node(
         package='rviz2',
         executable='rviz2',
