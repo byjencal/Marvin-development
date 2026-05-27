@@ -61,7 +61,7 @@ Ejecutar código de ROS2 de Marvin------------------------------------
 colcon build
 Abrir otra terminal docker:
 sudo docker ps
-sudo docker exec -it 960cb922abf3 /bin/bash
+sudo docker exec -it 24a441c60d6a /bin/bash
 
 Launch base marvin:
 source install/setup.bash

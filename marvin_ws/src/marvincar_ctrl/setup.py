@@ -23,6 +23,7 @@ setup(
     entry_points={
         'console_scripts': [
             'marvin_keyboard	= marvincar_ctrl.marvin_keyboard:main',
+            'hori_wheel_node = marvincar_ctrl.hori_wheel_node:main',
             'marvin_joy	        = marvincar_ctrl.marvin_joy:main',
         ],
     },

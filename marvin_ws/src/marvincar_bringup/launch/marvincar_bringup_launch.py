@@ -105,6 +105,6 @@ def generate_launch_description():
         base_node,
         imu_filter_node,
         ekf_node,
-        joy_node,
-        marvin_joy_node,
+        #joy_node,
+        #marvin_joy_node,
     ])
