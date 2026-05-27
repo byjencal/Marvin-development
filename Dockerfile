@@ -33,7 +33,6 @@ WORKDIR /root/marvin/marvin_ws
 
 # 5. Descargar el código fuente de cv_bridge oficial
 RUN git clone -b foxy https://github.com/ros-perception/vision_opencv.git src/vision_opencv
-RUN git clone -b 2.0.8 https://github.com/ros/xacro.git src/xacro
 
 # 6. Sincronizar relojes
 RUN find . -type f -exec touch {} +
