@@ -2,7 +2,7 @@ Inicializar la Jetson de Marvin-------------------------------------
 ssh marvin@192.168.31.128
 
 Emparejar la hora:
-sudo date -s "2026-05-27 10:53:40"
+sudo date -s "2026-06-27 8:32:20"
 
 Emparejar palanca:
 sudo bluetoothctl
