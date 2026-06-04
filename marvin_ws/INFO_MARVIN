@@ -2,7 +2,7 @@ Inicializar la Jetson de Marvin-------------------------------------
 ssh marvin@192.168.31.128
 
 Emparejar la hora:
-sudo date -s "2026-06-27 8:32:20"
+sudo date -s "2026-06-2 15:26:20"
 
 Emparejar palanca:
 sudo bluetoothctl
@@ -53,8 +53,7 @@ sudo docker run -it --net=host \
   --env="NVIDIA_DRIVER_CAPABILITIES=all" \
   --runtime nvidia \
   -v /tmp/argus_socket:/tmp/argus_socket \
-  -v /dev/bus/usb:/dev/bus/usb \
-  --device-cgroup-rule='c 189:* rmw' \
+  -v /dev:/dev \
   marvin:latest /bin/bash
 
 Ejecutar código de ROS2 de Marvin------------------------------------
@@ -62,6 +61,15 @@ colcon build
 Abrir otra terminal docker:
 sudo docker ps
 sudo docker exec -it 24a441c60d6a /bin/bash
+
+# 1. Asegúrate de tener las librerías base para leer puertos físicos
+pip3 install pyserial smbus2
+
+# 2. Entra a la carpeta que acabamos de inyectar
+cd ~/marvin/marvin_ws/dependencies/py_install
+
+# 3. Instala el driver en el núcleo de Python de este contenedor
+python3 setup.py install
 
 Launch base marvin:
 source install/setup.bash

@@ -29,11 +29,10 @@ class HoriWheelNode(Node):
             raw_accel = joy_msg.axes[self.AXIS_ACCEL_PEDAL]
             raw_brake = joy_msg.axes[self.AXIS_BRAKE_PEDAL]
             
-            # NOTA: Algunos pedales en Linux leen -1.0 cuando están sueltos y 1.0 pisados.
-            # Convertimos ese rango de (-1 a 1) a (0 a 1) para que sea un multiplicador limpio.
-            # Si tu pedal lee de 0 a 1 directamente, puedes quitar esta conversión.
-            accel_mapped = (raw_accel + 1.0) / 2.0 
-            brake_mapped = (raw_brake + 1.0) / 2.0
+            # ¡CORRECCIÓN DE LOS PEDALES!
+            # Ahora, Reposo (1.0) -> 0.0 y Pisado a fondo (-1.0) -> 1.0
+            accel_mapped = (1.0 - raw_accel) / 2.0 
+            brake_mapped = (1.0 - raw_brake) / 2.0
 
             # Lógica de acelerador y freno
             if accel_mapped > 0.1:
@@ -43,9 +42,10 @@ class HoriWheelNode(Node):
             else:
                  twist.linear.x = 0.0
                  
-            # Lógica de dirección (Invertimos el signo si el volante gira al revés)
+            # ¡CORRECCIÓN DE LA DIRECCIÓN!
+            # Se eliminó el * -1.0 para que el giro coincida con el movimiento real
             raw_steering = joy_msg.axes[self.AXIS_STEERING]
-            twist.angular.z = raw_steering * self.MAX_ANGULAR_SPEED * -1.0
+            twist.angular.z = raw_steering * self.MAX_ANGULAR_SPEED
         else:
             twist.linear.x = 0.0
             twist.angular.z = 0.0
