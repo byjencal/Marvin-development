@@ -26,14 +26,6 @@ sudo docker rmi marvin:latest -f
 sudo docker build . -t marvin:latest
 
 Iniciar Docker------------------------------------------------------
-  
-sudo docker run -it --net=host \
-  --privileged \
-  --env="ROS_DOMAIN_ID=1" \
-  --env="NVIDIA_DRIVER_CAPABILITIES=all" \
-  --runtime nvidia \
-  -v /tmp/argus_socket:/tmp/argus_socket \
-  marvin:latest /bin/bash
 
 sudo docker run -it --net=host \
   --privileged \

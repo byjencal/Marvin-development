@@ -21,7 +21,7 @@ RUN apt-get update && apt-get install -y \
     python3-pip \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pip3 install depthai
+RUN pip3 install depthai pyserial smbus2
 
 WORKDIR /root/marvin
 
@@ -30,6 +30,8 @@ COPY . .
 COPY ./configurations/.bashrc /root/.bashrc
 
 WORKDIR /root/marvin/marvin_ws
+
+RUN cd dependencies/py_install && python3 setup.py install
 
 # 5. Descargar el código fuente de cv_bridge oficial
 RUN git clone -b foxy https://github.com/ros-perception/vision_opencv.git src/vision_opencv
