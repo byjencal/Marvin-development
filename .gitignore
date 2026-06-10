@@ -9,3 +9,6 @@ log/
 marvin_ws/build/
 marvin_ws/install/
 marvin_ws/log/
+
+# colcon package exclusion markers
+COLCON_IGNORE

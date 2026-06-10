@@ -1,8 +1,10 @@
 Inicializar la Jetson de Marvin-------------------------------------
 ssh marvin@192.168.31.128
+ssh marvin@192.168.0.104
+ssh marvin@192.168.0.109
 
 Emparejar la hora:
-sudo date -s "2026-06-2 15:26:20"
+sudo date -s "2026-06-10 14:45:20"
 
 Emparejar palanca:
 sudo bluetoothctl
@@ -24,21 +26,6 @@ sudo docker rmi marvin:latest -f
 sudo docker build . -t marvin:latest
 
 Iniciar Docker------------------------------------------------------
-# Con mando conectado:
-sudo docker run -it --net=host --device=/dev/input/event0 --device=/dev/input/event1 --device=/dev/input/event2 --device=/dev/input/js0 --device=/dev/myserial --device=/dev/rplidar --env="DISPLAY" --env="QT_X11_NO_MITSHM=1" -v /tmp/.X11-unix:/tmp/.X11-unix marvin:latest /bin/bash
-# Sin mando conectado:
-sudo docker run -it --net=host --device=/dev/input/event0 --device=/dev/input/event1 --device=/dev/myserial --device=/dev/rplidar --env="DISPLAY" --env="QT_X11_NO_MITSHM=1" -v /tmp/.X11-unix:/tmp/.X11-unix marvin:latest /bin/bash
-Con camaras
-sudo docker run -it --net=host \
-  --device=/dev/input/event0 \
-  --device=/dev/input/event1 \
-  --device=/dev/myserial \
-  --device=/dev/rplidar \
-  --device=/dev/video0 \
-  --device=/dev/video1 \
-  --runtime nvidia \
-  -v /tmp/argus_socket:/tmp/argus_socket \
-  marvin:latest /bin/bash
   
 sudo docker run -it --net=host \
   --privileged \
@@ -71,6 +58,8 @@ cd ~/marvin/marvin_ws/dependencies/py_install
 # 3. Instala el driver en el núcleo de Python de este contenedor
 python3 setup.py install
 
+colcon build --packages-select marvincar_base_node marvincar_bringup marvincar_laser
+
 Launch base marvin:
 source install/setup.bash
 export ROS_DOMAIN_ID=1
@@ -91,6 +80,15 @@ export ROS_DOMAIN_ID=1
 ros2 run marvincar_vision stereo_node
 ros2 topic list
 // eliminado: ros2 launch marvincar_camera csi_cameras_launch.py
+
+cd marvin/marvin_ws
+source install/setup.bash
+export ROS_DOMAIN_ID=1
+ros2 run marvincar_ctrl hori_wheel_node
+
+export ROS_DOMAIN_ID=1
+ros2 run joy joy_node
+
 En la laptop---------------------------------------------------------
 
 cd MARVIN
