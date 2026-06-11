@@ -25,14 +25,7 @@ class HoriWheelNode(Node):
     def joy_callback(self, joy_msg):
         twist = Twist()
         
-        # 1. DIRECCIÓN INDEPENDIENTE
-        # El servo lee la posición de tu volante sin importar si aceleras, frenas o presionas botones.
-        # Si tienes el volante girado y no lo sueltas, las ruedas se quedarán giradas.
-        raw_steering = joy_msg.axes[self.AXIS_STEERING]
-        twist.angular.z = raw_steering * self.MAX_ANGULAR_SPEED
-        
-        # 2. ACELERACIÓN PROPORCIONAL
-        # Solo aplicamos velocidad si el botón de seguridad está presionado
+        # 1. ACELERACIÓN Y VELOCIDAD FANTASMA
         if joy_msg.buttons[self.BTN_DEADMAN] == 1:
             raw_accel = joy_msg.axes[self.AXIS_ACCEL_PEDAL]
             raw_brake = joy_msg.axes[self.AXIS_BRAKE_PEDAL]
@@ -40,16 +33,27 @@ class HoriWheelNode(Node):
             accel_mapped = (1.0 - raw_accel) / 2.0 
             brake_mapped = (1.0 - raw_brake) / 2.0
 
-            # Reducimos la 'zona muerta' a 0.02 para que sea sensible desde el primer milímetro
             if accel_mapped > 0.02:
                  twist.linear.x = accel_mapped * self.MAX_LINEAR_SPEED
             elif brake_mapped > 0.02:
                  twist.linear.x = -brake_mapped * self.MAX_LINEAR_SPEED
             else:
-                 twist.linear.x = 0.0
+                 # HACK 1: Velocidad Fantasma (0.01 m/s)
+                 # Es tan débil que los motores físicos no tendrán fuerza para mover el peso del carro,
+                 # pero engaña a la placa Yahboom para que mantenga activo el servo de dirección.
+                 twist.linear.x = 0.01
         else:
-            # Si sueltas el botón, el robot deja de avanzar, pero NO reseteamos angular.z
-            twist.linear.x = 0.0
+            twist.linear.x = 0.01
+
+        # 2. EL TRUCO DE CANCELACIÓN DE ACKERMANN
+        raw_steering = joy_msg.axes[self.AXIS_STEERING]
+        
+        # Factor para mantener la escala de giro original
+        steering_factor = self.MAX_ANGULAR_SPEED / self.MAX_LINEAR_SPEED
+        
+        # HACK 2: Al multiplicar el volante por la velocidad (twist.linear.x), 
+        # cuando la Jetson lo divida internamente, el resultado será el ángulo puro.
+        twist.angular.z = raw_steering * twist.linear.x * steering_factor
 
         self.cmd_vel_pub.publish(twist)
 
