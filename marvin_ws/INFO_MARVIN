@@ -4,7 +4,7 @@ ssh marvin@192.168.0.104
 ssh marvin@192.168.0.109
 
 Emparejar la hora:
-sudo date -s "2026-06-10 14:45:20"
+sudo date -s "2026-06-11 8:25:20"
 
 Emparejar palanca:
 sudo bluetoothctl
@@ -20,11 +20,11 @@ cd marvin
 git pull origin main
 # Actualizar dockerfile(Si hay cambios):
 cd /marvin
-# Eliminar imagen antigua
-sudo docker rmi marvin:latest -f
 # Reconstruir Docker (puede tomar 5-10 minutos)
+./setup_jetson.sh
 sudo docker build . -t marvin:latest
 
+./setup_laptop.sh
 Iniciar Docker------------------------------------------------------
 
 sudo docker run -it --net=host \
@@ -40,15 +40,6 @@ colcon build
 Abrir otra terminal docker:
 sudo docker ps
 sudo docker exec -it 24a441c60d6a /bin/bash
-
-# 1. Asegúrate de tener las librerías base para leer puertos físicos
-pip3 install pyserial smbus2
-
-# 2. Entra a la carpeta que acabamos de inyectar
-cd ~/marvin/marvin_ws/dependencies/py_install
-
-# 3. Instala el driver en el núcleo de Python de este contenedor
-python3 setup.py install
 
 colcon build --packages-select marvincar_base_node marvincar_bringup marvincar_laser
 
