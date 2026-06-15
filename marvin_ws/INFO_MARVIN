@@ -39,7 +39,7 @@ Ejecutar código de ROS2 de Marvin------------------------------------
 colcon build
 Abrir otra terminal docker:
 sudo docker ps
-sudo docker exec -it 24a441c60d6a /bin/bash
+sudo docker exec -it f3618ee69b30 /bin/bash
 
 colcon build --packages-select marvincar_bringup
 
@@ -58,6 +58,8 @@ source install/setup.bash
 export ROS_DOMAIN_ID=1
 ros2 launch marvincar_nav mapping_launch.py  
 
+
+colcon build --packages-select marvincar_vision
 source install/setup.bash
 export ROS_DOMAIN_ID=1
 ros2 run marvincar_vision stereo_node
