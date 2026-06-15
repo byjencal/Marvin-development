@@ -14,86 +14,90 @@ class HoriWheelNode(Node):
         self.AXIS_STEERING = 0      # Volante
         self.AXIS_ACCEL_PEDAL = 5   # Pedal Derecho (Acelerador)
         self.AXIS_BRAKE_PEDAL = 2   # Pedal Izquierdo (Freno)
-        self.BTN_DEADMAN = 1        # Botón de seguridad
+        self.BTN_REVERSE = 1        # Botón 1: Caja de Cambios (Mantener para Reversa)
         
         # --- PARÁMETROS FÍSICOS Y DE INERCIA ---
         self.MAX_LINEAR_SPEED = 0.7   # m/s
         self.UPDATE_RATE = 0.05       # 20 Hz (50 milisegundos)
         
-        # Tasas de cambio (m/s que se suman o restan en cada "tick" del reloj)
-        # Puedes jugar con estos 3 valores para hacer el auto más pesado o más ligero
-        self.ACCEL_STEP = 0.6 * self.UPDATE_RATE   # Qué tan rápido acelera
-        self.COAST_STEP = 0.2 * self.UPDATE_RATE   # Freno regenerativo (Inercia natural)
-        self.BRAKE_STEP = 1.8 * self.UPDATE_RATE   # Qué tan fuerte es el disco de freno izquierdo
+        self.ACCEL_STEP = 0.6 * self.UPDATE_RATE   # Aceleración
+        self.COAST_STEP = 0.2 * self.UPDATE_RATE   # Inercia libre (Freno regenerativo)
+        self.BRAKE_STEP = 1.8 * self.UPDATE_RATE   # Freno de pedal
         
         # --- VARIABLES DE ESTADO INTERNO ---
         self.current_speed = 0.0
         self.target_steering = 0.0
         self.gas_pedal = 0.0
         self.brake_pedal = 0.0
-        self.deadman_active = False
+        self.reverse_active = False
 
-        # Creamos el "Reloj Interno" que calculará la inercia independientemente de si tocas el volante o no
+        # Reloj interno de físicas
         self.timer = self.create_timer(self.UPDATE_RATE, self.control_loop)
         
-        self.get_logger().info("Nodo HORI: Modo Auto Eléctrico (Inercia y Freno Real) activado.")
+        self.get_logger().info("Nodo HORI: Modo Libre (Sin botón de seguridad) y Reversa activada.")
 
     def joy_callback(self, joy_msg):
-        # 1. Guardamos el estado de los controles en las variables internas
-        self.deadman_active = (joy_msg.buttons[self.BTN_DEADMAN] == 1)
+        # Leemos si el botón de reversa está siendo presionado
+        self.reverse_active = (joy_msg.buttons[self.BTN_REVERSE] == 1)
         
         raw_accel = joy_msg.axes[self.AXIS_ACCEL_PEDAL]
         raw_brake = joy_msg.axes[self.AXIS_BRAKE_PEDAL]
         
-        # Rango de 0.0 (suelto) a 1.0 (pisado a fondo)
         self.gas_pedal = (1.0 - raw_accel) / 2.0 
         self.brake_pedal = (1.0 - raw_brake) / 2.0
 
         self.target_steering = joy_msg.axes[self.AXIS_STEERING]
 
-    # Esta función se ejecuta 20 veces por segundo automáticamente
     def control_loop(self):
         twist = Twist()
         
-        if self.deadman_active:
-            # 1. LÓGICA DE FRENADO MANUAL (Pedal Izquierdo)
-            if self.brake_pedal > 0.02:
-                # Restamos velocidad proporcional a qué tan fuerte pisas el freno
+        # 1. LÓGICA DE FRENADO MANUAL (Pedal Izquierdo)
+        if self.brake_pedal > 0.02:
+            # Si vamos hacia adelante, restamos velocidad
+            if self.current_speed > 0:
                 self.current_speed -= self.BRAKE_STEP * self.brake_pedal
+                if self.current_speed < 0: self.current_speed = 0.0 # Evitar que el freno cause reversa
+            # Si vamos en reversa (velocidad negativa), sumamos para acercarnos a 0
+            elif self.current_speed < 0:
+                self.current_speed += self.BRAKE_STEP * self.brake_pedal
+                if self.current_speed > 0: self.current_speed = 0.0
                 
-            # 2. LÓGICA DE ACELERACIÓN (Pedal Derecho)
-            elif self.gas_pedal > 0.02:
-                target_speed = self.gas_pedal * self.MAX_LINEAR_SPEED
+        # 2. LÓGICA DE ACELERACIÓN (Pedal Derecho)
+        elif self.gas_pedal > 0.02:
+            # Determinamos si queremos ir a +0.7 (Adelante) o -0.7 (Reversa)
+            target_speed = self.gas_pedal * self.MAX_LINEAR_SPEED
+            if self.reverse_active:
+                target_speed = -target_speed
+            
+            # Suavizado de inercia hacia la velocidad objetivo
+            if self.current_speed < target_speed:
+                self.current_speed += self.ACCEL_STEP
+            elif self.current_speed > target_speed:
+                self.current_speed -= self.ACCEL_STEP
                 
-                if self.current_speed < target_speed:
-                    self.current_speed += self.ACCEL_STEP
-                elif self.current_speed > target_speed:
-                    self.current_speed -= self.COAST_STEP # Si aflojas el pie, baja suavemente
-                    
-            # 3. LÓGICA DE INERCIA REGENERATIVA (Ningún pedal pisado)
-            else:
-                self.current_speed -= self.COAST_STEP
-                
+        # 3. LÓGICA DE INERCIA REGENERATIVA (Ningún pedal pisado)
         else:
-            # Si sueltas el botón de seguridad 1, el auto se detiene un poco más rápido por seguridad
-            self.current_speed -= self.COAST_STEP * 2.0
+            if self.current_speed > 0:
+                self.current_speed -= self.COAST_STEP
+                if self.current_speed < 0: self.current_speed = 0.0
+            elif self.current_speed < 0:
+                self.current_speed += self.COAST_STEP
+                if self.current_speed > 0: self.current_speed = 0.0
 
         # --- LIMITES Y ASISTENTE DE ESTACIONAMIENTO ---
         
-        # Asistente: Si el auto va muy lento rodando solo, lo paramos por completo.
-        if self.current_speed < 0.05 and self.gas_pedal < 0.02:
+        # Si la velocidad absoluta (hacia adelante o atrás) es casi nula y no aceleramos, detenemos el auto.
+        if abs(self.current_speed) < 0.05 and self.gas_pedal < 0.02:
             self.current_speed = 0.0
             
-        # Límite Físico: El auto nunca puede ir en reversa (< 0.0) ni rebasar el máximo
-        if self.current_speed < 0.0:
-            self.current_speed = 0.0
-        elif self.current_speed > self.MAX_LINEAR_SPEED:
+        # Bloquear velocidades por encima del máximo permitido físico
+        if self.current_speed > self.MAX_LINEAR_SPEED:
             self.current_speed = self.MAX_LINEAR_SPEED
+        elif self.current_speed < -self.MAX_LINEAR_SPEED:
+            self.current_speed = -self.MAX_LINEAR_SPEED
 
         # --- EMPAQUETADO Y ENVÍO DEL MENSAJE ---
         twist.linear.x = self.current_speed
-        
-        # Dirección directa al servo (Hack de Yahboom)
         twist.linear.y = self.target_steering * 0.045
         twist.angular.z = 0.0
 
