@@ -186,20 +186,20 @@ class marvincar_driver(Node):
         
         twist.linear.x = vx*1.0    
         twist.linear.y = vy*1000*1.0   
-        twist.angular.z = angular*1.0    
-        self.velPublisher.publish(twist)
+        # twist.angular.z = angular*1.0    
+        # self.velPublisher.publish(twist)
         
-        self.imuPublisher.publish(imu)
-        self.magPublisher.publish(mag)
-        self.volPublisher.publish(battery)
-        self.EdiPublisher.publish(edition)
+        # self.imuPublisher.publish(imu)
+        # self.magPublisher.publish(mag)
+        # self.volPublisher.publish(battery)
+        # self.EdiPublisher.publish(edition)
         
         steer_radis = vy*1000.0*3.1416/180.0
         state.position = [0.0, 0.0, steer_radis, 0.0, steer_radis, 0.0]
         if not vx == angular == 0:
             i = random.uniform(-3.14, 3.14)
             state.position = [i, i, steer_radis, i, steer_radis, i]
-        self.staPublisher.publish(state)
+        # self.staPublisher.publish(state)
             
 def main():
     rclpy.init() 

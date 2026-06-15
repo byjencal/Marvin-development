@@ -57,12 +57,12 @@ def generate_launch_description():
         executable='Ackman_driver',
     )
 
-    # --- NODO DE HARDWARE 2: Cinemática base del robot ---
-    base_node = Node(
-        package='marvincar_base_node',
-        executable='base_node',
-        parameters=[{'pub_odom_tf': LaunchConfiguration('pub_odom_tf')}]
-    )
+    # --- NODO DE HARDWARE 2: Cinemática base del robot (APAGADO PARA AHORRAR RED) ---
+    # base_node = Node(
+    #     package='marvincar_base_node',
+    #     executable='base_node',
+    #     parameters=[{'pub_odom_tf': LaunchConfiguration('pub_odom_tf')}]
+    # )
 
     # imu_filter_node = Node(
     #     package='imu_filter_madgwick',
@@ -93,8 +93,8 @@ def generate_launch_description():
         # joint_state_publisher_gui_node,
         # robot_state_publisher_node,
         # rviz_node,
-        driver_node,  # <-- ACTIVO
-        base_node,    # <-- ACTIVO
+        driver_node,
+        # base_node,    # <-- ACTIVO
         # imu_filter_node,
         # ekf_node,
     ])

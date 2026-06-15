@@ -1,6 +1,8 @@
 from launch import LaunchDescription
 from launch_ros.actions import Node
 
+#name file: hori_teleop.launch.py
+#Ruta marvin_ws/src/marvincar_ctrl/launch/hori_teleop.launch.py
 def generate_launch_description():
     return LaunchDescription([
         # 1. Nodo oficial que lee el USB del volante

@@ -41,7 +41,7 @@ Abrir otra terminal docker:
 sudo docker ps
 sudo docker exec -it 24a441c60d6a /bin/bash
 
-colcon build --packages-select marvincar_base_node marvincar_bringup marvincar_laser
+colcon build --packages-select marvincar_bringup
 
 Launch base marvin:
 source install/setup.bash
