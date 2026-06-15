@@ -16,16 +16,15 @@ class HoriWheelNode(Node):
         self.AXIS_BRAKE_PEDAL = 2   # Pedal Izquierdo (Freno)
         self.BTN_DEADMAN = 1        # Botón de seguridad
         
-        # VELOCIDADES ÓPTIMAS REALES (Ajustadas al hardware físico de Yahboom)
-        self.MAX_LINEAR_SPEED = 0.7  # m/s (Velocidad física máxima real del chasis)
-        self.MAX_ANGULAR_SPEED = 1.0 # rad/s (Alineado con los grados máximos del servo)
+        # VELOCIDAD LINEAL
+        self.MAX_LINEAR_SPEED = 0.7  # m/s
         
-        self.get_logger().info("Nodo HORI (Conducción Proporcional Avanzada) iniciado.")
+        self.get_logger().info("Nodo HORI: Modo de Control Directo del Servo Activado.")
 
     def joy_callback(self, joy_msg):
         twist = Twist()
         
-        # 1. ACELERACIÓN Y VELOCIDAD FANTASMA
+        # 1. ACELERACIÓN
         if joy_msg.buttons[self.BTN_DEADMAN] == 1:
             raw_accel = joy_msg.axes[self.AXIS_ACCEL_PEDAL]
             raw_brake = joy_msg.axes[self.AXIS_BRAKE_PEDAL]
@@ -38,22 +37,19 @@ class HoriWheelNode(Node):
             elif brake_mapped > 0.02:
                  twist.linear.x = -brake_mapped * self.MAX_LINEAR_SPEED
             else:
-                 # HACK 1: Velocidad Fantasma (0.01 m/s)
-                 # Es tan débil que los motores físicos no tendrán fuerza para mover el peso del carro,
-                 # pero engaña a la placa Yahboom para que mantenga activo el servo de dirección.
-                 twist.linear.x = 0.01
+                 twist.linear.x = 0.0
         else:
-            twist.linear.x = 0.01
+            twist.linear.x = 0.0
 
-        # 2. EL TRUCO DE CANCELACIÓN DE ACKERMANN
+        # 2. CONTROL DIRECTO DE DIRECCIÓN (Hack de Yahboom R2)
         raw_steering = joy_msg.axes[self.AXIS_STEERING]
         
-        # Factor para mantener la escala de giro original
-        steering_factor = self.MAX_ANGULAR_SPEED / self.MAX_LINEAR_SPEED
+        # Multiplicamos el giro bruto [-1.0 a 1.0] por 0.045 (que son 45 grados en la lógica de Yahboom).
+        # Nota: Si las ruedas giran al revés, simplemente cambia 0.045 por -0.045
+        twist.linear.y = raw_steering * 0.045
         
-        # HACK 2: Al multiplicar el volante por la velocidad (twist.linear.x), 
-        # cuando la Jetson lo divida internamente, el resultado será el ángulo puro.
-        twist.angular.z = raw_steering * twist.linear.x * steering_factor
+        # Silenciamos el angular.z para que el firmware de Yahboom no intente sobreescribir nuestro ángulo
+        twist.angular.z = 0.0
 
         self.cmd_vel_pub.publish(twist)
 

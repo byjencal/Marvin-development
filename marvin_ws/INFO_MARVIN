@@ -4,7 +4,7 @@ ssh marvin@192.168.0.104
 ssh marvin@192.168.0.109
 
 Emparejar la hora:
-sudo date -s "2026-06-11 8:25:20"
+sudo date -s "2026-06-15 7:54:20"
 
 Emparejar palanca:
 sudo bluetoothctl
