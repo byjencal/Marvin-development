@@ -25,6 +25,9 @@ RUN pip3 install depthai pyserial smbus2
 
 WORKDIR /root/marvin
 
+ENV RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
+ENV CYCLONEDDS_URI=file:///root/marvin/marvin_ws/shared_config/cyclonedds.xml
+
 # 4. Copiar tu código
 COPY . .
 COPY ./configurations/.bashrc /root/.bashrc
