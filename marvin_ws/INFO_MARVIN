@@ -1,10 +1,9 @@
 Inicializar la Jetson de Marvin-------------------------------------
-ssh marvin@192.168.31.128
-ssh marvin@192.168.0.104
-ssh marvin@192.168.0.109
+Conectarse por medio de wifi a Marvin_Net
+ssh marvin@10.42.0.1
 
 Emparejar la hora:
-sudo date -s "2026-06-15 7:54:20"
+sudo date -s "2026-06-17 12:18:20"
 
 Emparejar palanca:
 sudo bluetoothctl
@@ -39,14 +38,14 @@ Ejecutar código de ROS2 de Marvin------------------------------------
 colcon build
 Abrir otra terminal docker:
 sudo docker ps
-sudo docker exec -it f3618ee69b30 /bin/bash
+sudo docker exec -it 0a5c431baa59 /bin/bash
 
-colcon build --packages-select marvincar_bringup
+colcon build --packages-select marvincar_bringup marvincar_vision
 
 Launch base marvin:
 source install/setup.bash
 export ROS_DOMAIN_ID=1
-ros2 launch marvincar_bringup marvincar_bringup_launch.py
+ros2 launch marvincar_bringup marvincar_bringup_launch.py 
 
 Correr lidar marvin:
 source install/setup.bash
@@ -62,14 +61,20 @@ ros2 launch marvincar_nav mapping_launch.py
 colcon build --packages-select marvincar_vision
 source install/setup.bash
 export ROS_DOMAIN_ID=1
-ros2 run marvincar_vision stereo_node
+rqt
+ros2 launch marvincar_vision camera.launch.py
 ros2 topic list
 // eliminado: ros2 launch marvincar_camera csi_cameras_launch.py
+
+
 
 cd marvin/marvin_ws
 source install/setup.bash
 export ROS_DOMAIN_ID=1
+ros2 launch marvincar_ctrl hori_teleop.launch.py
+
 ros2 run marvincar_ctrl hori_wheel_node
+ros2 run rqt_image_view rqt_image_view
 
 export ROS_DOMAIN_ID=1
 ros2 run joy joy_node
