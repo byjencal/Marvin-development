@@ -63,10 +63,6 @@ source install/setup.bash
 export ROS_DOMAIN_ID=1
 rqt
 ros2 launch marvincar_vision camera.launch.py
-ros2 topic list
-// eliminado: ros2 launch marvincar_camera csi_cameras_launch.py
-
-
 
 cd marvin/marvin_ws
 source install/setup.bash

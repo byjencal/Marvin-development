@@ -57,13 +57,13 @@ def generate_launch_description():
         executable='Ackman_driver',
     )
 
-    camera_launch = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(os.path.join(
-            get_package_share_directory('marvincar_vision'),
-            'launch',
-            'camera.launch.py'
-        ))
-    )
+    #camera_launch = IncludeLaunchDescription(
+    #    PythonLaunchDescriptionSource(os.path.join(
+    #        get_package_share_directory('marvincar_vision'),
+    #        'launch',
+    #        'camera.launch.py'
+    #    ))
+    #)
 
     # --- NODO DE HARDWARE 2: Cinemática base del robot (APAGADO PARA AHORRAR RED) ---
     # base_node = Node(
@@ -102,7 +102,7 @@ def generate_launch_description():
         # robot_state_publisher_node,
         # rviz_node,
         driver_node,
-        camera_launch,
+        # camera_launch,
         # base_node,    # <-- ACTIVO
         # imu_filter_node,
         # ekf_node,
