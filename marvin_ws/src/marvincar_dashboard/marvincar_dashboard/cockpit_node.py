@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 
+import math
 import sys
 
 import cv2
 import numpy as np
 import rclpy
+from geometry_msgs.msg import Twist
 from PyQt5.QtCore import QThread, Qt, pyqtSignal
 from PyQt5.QtGui import QImage, QPixmap
-from PyQt5.QtWidgets import QApplication, QGridLayout, QLabel, QMainWindow, QWidget
+from PyQt5.QtWidgets import QApplication, QGridLayout, QLabel, QMainWindow, QSizePolicy, QWidget
 from rclpy.context import Context
 from rclpy.executors import ExternalShutdownException
 from rclpy.node import Node
@@ -25,10 +27,12 @@ class DashboardRosNode(Node):
     def __init__(self, left_callback, center_callback, right_callback, context):
         super().__init__('marvincar_cockpit_dashboard', context=context)
 
+        self.current_steering_angle = 0.0
         self._left_callback = left_callback
         self._center_callback = center_callback
         self._right_callback = right_callback
 
+        self.create_subscription(Twist, 'cmd_vel', self._on_cmd_vel, 10)
         self.create_subscription(
             CompressedImage,
             LEFT_TOPIC,
@@ -50,6 +54,13 @@ class DashboardRosNode(Node):
 
         self.get_logger().info('M.A.R.V.I.N. cockpit dashboard subscribed to compressed video streams.')
 
+    def _on_cmd_vel(self, msg):
+        # Leemos la componente lineal (ajusta a msg.linear.x si tu joystick usa el eje X para girar)
+        raw_steering = msg.linear.y 
+        self.current_steering_angle = raw_steering * 400.0
+        
+        self.get_logger().info(f"[HUD] Volante girando! Linear: {raw_steering:.2f} -> Angulo visual: {self.current_steering_angle:.1f} grados")
+
     def _on_left_image(self, msg):
         self._decode_and_emit(msg, self._left_callback, 'left')
 
@@ -63,6 +74,9 @@ class DashboardRosNode(Node):
         encoded_image = np.frombuffer(msg.data, dtype=np.uint8)
         frame = cv2.imdecode(encoded_image, cv2.IMREAD_COLOR)
 
+        if camera_name == 'left' or camera_name == 'right':
+            frame = cv2.rotate(frame, cv2.ROTATE_180)
+
         if frame is None:
             self.get_logger().warning(
                 f'Could not decode compressed frame from {camera_name} camera.',
@@ -70,7 +84,47 @@ class DashboardRosNode(Node):
             )
             return
 
+        if camera_name == 'center':
+            frame = self._draw_steering_wheel(frame)
+
         frame_callback(frame)
+
+    def _draw_steering_wheel(self, frame):
+        h, w = frame.shape[:2]
+        cx, cy = int(w / 2), int(h + (h * 0.1)) 
+        radius = int(min(w, h) / 2.5)
+        
+        # Aro exterior estático
+        cv2.circle(frame, (cx, cy), radius, (50, 50, 50), 15)
+        cv2.circle(frame, (cx, cy), radius, (150, 150, 150), 2)
+        
+        angle = self.current_steering_angle
+        
+        # Brazos del volante
+        base_angles = [180, 0, 90] 
+        for base in base_angles:
+            rad = math.radians(base - angle)
+            x = int(cx + radius * math.cos(rad))
+            y = int(cy + radius * math.sin(rad))
+            cv2.line(frame, (cx, cy), (x, y), (80, 80, 80), 18)
+            cv2.line(frame, (cx, cy), (x, y), (180, 180, 180), 2)
+
+        # INDICADOR VISUAL DE ROTACIÓN (Línea roja central)
+        # En OpenCV, -90 grados es "hacia arriba". Restamos el ángulo de giro.
+        rad_up = math.radians(-90 - angle)
+        x_up = int(cx + radius * math.cos(rad_up))
+        y_up = int(cy + radius * math.sin(rad_up))
+        
+        # Línea de timón (Roja)
+        cv2.line(frame, (cx, cy), (x_up, y_up), (140, 140, 140), 6)
+        # Marca en el aro superior (Amarilla) para ver cruces extremos
+        cv2.circle(frame, (x_up, y_up), 10, (200, 200, 200), -1) 
+        
+        # Bocina central
+        cv2.circle(frame, (cx, cy), int(radius/3.5), (40, 40, 40), -1)
+        cv2.circle(frame, (cx, cy), int(radius/3.5), (150, 150, 150), 3)
+        
+        return frame
 
 
 class RosVideoThread(QThread):
@@ -95,7 +149,12 @@ class RosVideoThread(QThread):
                 self.right_frame.emit,
                 context=self._context,
             )
-            rclpy.spin(self._node)
+            
+            from rclpy.executors import SingleThreadedExecutor
+            executor = SingleThreadedExecutor(context=self._context)
+            executor.add_node(self._node)
+            executor.spin()
+            
         except (ExternalShutdownException, KeyboardInterrupt):
             pass
         finally:
@@ -163,7 +222,8 @@ class CockpitWindow(QMainWindow):
         label = QLabel(title)
         label.setObjectName('videoSurface')
         label.setAlignment(Qt.AlignCenter)
-        label.setFixedSize(width, height)
+        label.setMinimumSize(int(width/2), int(height/2))
+        label.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         label.setScaledContents(False)
         return label
 
@@ -209,7 +269,7 @@ def main(args=None):
 
     window = CockpitWindow(ros_args=ros_args)
     app.aboutToQuit.connect(window.ros_thread.stop)
-    window.show()
+    window.showMaximized()
 
     sys.exit(app.exec_())
 
