@@ -15,7 +15,7 @@ class HoriWheelNode(Node):
         self.AXIS_BRAKE_PEDAL = 2   
         self.BTN_REVERSE = 1        
         
-        self.MAX_LINEAR_SPEED = 1.8  # m/s
+        self.MAX_LINEAR_SPEED = 3  # m/s, valor alto para prueba de velocidad maxima del motor
         self.get_logger().info("Nodo HORI: Modo Telemetría Puro. Físicas transferidas a M.A.R.V.I.N.")
 
     def joy_callback(self, joy_msg):

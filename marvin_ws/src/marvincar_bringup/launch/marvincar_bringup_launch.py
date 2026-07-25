@@ -54,7 +54,7 @@ def generate_launch_description():
     # --- NODO DE HARDWARE 1: Comunicación con la placa controladora (Motores) ---
     driver_node = Node(
         package='marvincar_bringup',
-        executable='Ackman_driver',
+        executable='marvin_base_driver',
     )
 
     camera_launch = IncludeLaunchDescription(

@@ -138,7 +138,7 @@ export _colcon_cd_root=/root/marvin/marvin_ws
 source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash
 
 #ros2
-source /opt/ros/foxy/setup.bash
+#source /opt/ros/foxy/setup.bash
 if [ -f /root/marvin/marvin_ws/install/setup.bash ]; then
     source /root/marvin/marvin_ws/install/setup.bash
 fi

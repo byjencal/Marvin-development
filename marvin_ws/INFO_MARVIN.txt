@@ -1,9 +1,9 @@
 Inicializar la Jetson de Marvin-------------------------------------
 Conectarse por medio de wifi a Marvin_Net
-ssh marvin@10.42.0.1
+ssh marvin@192.168.5.10
 
 Emparejar la hora:
-sudo date -s "2026-06-23 12:41:20"
+sudo date -s "2026-07-6 10:35:20"
 
 Emparejar palanca:
 sudo bluetoothctl
@@ -24,31 +24,31 @@ cd /marvin
 sudo docker build . -t marvin:latest
 
 ./setup_laptop.sh
-Iniciar Docker------------------------------------------------------
-
-sudo docker run -it --net=host \
+Crear docker------------------------------------------------------
+sudo docker run -it \
+  --name marvin_master \
+  --net=host \
   --privileged \
   --env="NVIDIA_DRIVER_CAPABILITIES=all" \
   --runtime nvidia \
   -v /tmp/argus_socket:/tmp/argus_socket \
   -v /dev:/dev \
+  -v /home/marvin/marvin/marvin_ws\
   marvin:latest /bin/bash
+
+Correr Docker
+sudo docker start -i marvin_master
 
 Ejecutar código de ROS2 de Marvin------------------------------------
 sudo docker ps
-sudo docker exec -it 0a5c431baa59 /bin/bash
+sudo docker marvin_master
 
 Compilar:
 colcon build --packages-select marvincar_bringup marvincar_vision
-
-Launch marvin:
 source install/setup.bash
-export ROS_DOMAIN_ID=1
+
 ros2 launch marvincar_bringup marvincar_bringup_launch.py 
 
-colcon build --packages-select marvincar_vision
-source install/setup.bash
-export ROS_DOMAIN_ID=1
 ros2 launch marvincar_vision camera.launch.py
 
 -------------HOST----------------
@@ -57,7 +57,11 @@ cd marvin/marvin_ws
 source install/setup.bash
 export ROS_DOMAIN_ID=1
 ros2 launch marvincar_ctrl hori_teleop.launch.py
-rqt
+
+cd marvin/marvin_ws
+source install/setup.bash
+export ROS_DOMAIN_ID=1
+ros2 run marvincar_dashboard cockpit_node
 
 
 ----------------Antiguo------------------------
@@ -71,3 +75,6 @@ source install/setup.bash
 export ROS_DOMAIN_ID=1
 ros2 launch marvincar_nav mapping_launch.py  
 
+
+futuro organizacion
+Sobre organización futura: por ahora tiene sentido dejar marvin_base_driver.py dentro de marvincar_bringup, porque este paquete está funcionando como el arranque del hardware del robot. Más adelante, cuando ya estén integrados base, LiDAR, cámaras, TF, navegación y configuraciones, conviene separar responsabilidades: un paquete marvincar_base_driver para motores/IMU/batería/controladora, paquetes o launch/configs para sensores como LiDAR y cámara, y dejar marvincar_bringup como el paquete que solo “enciende todo” con launch files y parámetros.
