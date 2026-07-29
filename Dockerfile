@@ -38,7 +38,7 @@ ENV CYCLONEDDS_URI=file:///root/marvin/marvin_ws/shared_config/cyclonedds.xml
 COPY . .
 
 # 10. Copiar el archivo .bashrc personalizado
-COPY ./configurations/.bashrc /root/.bashrc
+RUN ln -sf /root/marvin/marvin_ws/configurations/.bashrc /root/.bashrc
 
 # 11. Configurar el entorno de ROS 2
 WORKDIR /root/marvin/marvin_ws

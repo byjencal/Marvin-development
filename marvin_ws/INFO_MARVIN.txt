@@ -25,6 +25,7 @@ sudo docker build . -t marvin:latest
 
 ./setup_laptop.sh
 Crear docker------------------------------------------------------
+sudo docker rm -f marvin_master
 sudo docker run -it \
   --name marvin_master \
   --net=host \
@@ -33,7 +34,7 @@ sudo docker run -it \
   --runtime nvidia \
   -v /tmp/argus_socket:/tmp/argus_socket \
   -v /dev:/dev \
-  -v /home/marvin/marvin/marvin_ws\
+  -v /home/marvin/marvin/marvin_ws:/root/marvin/marvin_ws \
   marvin:latest /bin/bash
 
 Correr Docker
